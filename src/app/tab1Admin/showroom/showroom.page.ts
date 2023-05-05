@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService,Car } from '../../car.service';
+import { CarService, Car } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { EditPage } from '../edit/edit.page';
@@ -11,14 +11,18 @@ import { AddcarPage } from '../addcar/addcar.page';
 })
 export class ShowroomPage implements OnInit {
   public carList: any[] = [];
-  shoowid:any;
-  cardisp2:any[]=[];
+  shoowid: any;
+  cardisp2: any[] = [];
   //Shworoom2:any;
 
-  constructor(public dataSrv:CarService, private route:ActivatedRoute,public m:ModalController) {
-   this.shoowid=this.route.snapshot.paramMap.get('id');
-  
-   /*if(this.shoowid){
+  constructor(
+    public dataSrv: CarService,
+    private route: ActivatedRoute,
+    public m: ModalController
+  ) {
+    this.shoowid = this.route.snapshot.paramMap.get('id');
+
+    /*if(this.shoowid){
    this.dataSrv.afs.collection('cars', (ref) => ref.where('showroom','==',Number(this.shoowid))).get().subscribe((querySnapshot) => {
     const carsdis:any[]=[];
     querySnapshot.forEach((doc) => {
@@ -28,49 +32,42 @@ export class ShowroomPage implements OnInit {
     this.cardisp2=carsdis;
   });
 }*/
-   
-}
+  }
 
   ngOnInit() {
-   // this.carList = this.dataSrv.carList;
-   // const id = this.route.snapshot.paramMap.get('id');
-
+    // this.carList = this.dataSrv.carList;
+    // const id = this.route.snapshot.paramMap.get('id');
   }
-  deletecar(c:any){
-
-this.dataSrv.deletecar1(c.id);
-
+  deletecar(c: any) {
+    this.dataSrv.deletecar1(c.id);
   }
-  async addnewcar(){
-    const mod=await this.m.create({
-      component:AddcarPage,
-      componentProps: { 
-        'id':this.shoowid
-      } 
-    
+  async addnewcar() {
+    const mod = await this.m.create({
+      component: AddcarPage,
+      componentProps: {
+        id: this.shoowid,
+      },
     });
     mod.present();
-   // this.dataSrv.addnewcar1();
+    // this.dataSrv.addnewcar1();
   }
-  async openedit(car:any){
-    const mod=await this.m.create({
-      component:EditPage,
-      componentProps: { 
-        'id':car.id
-      } 
+  async openedit(car: any) {
+    const mod = await this.m.create({
+      component: EditPage,
+      componentProps: {
+        id: car.id,
+      },
     });
- alert(car.id);
+    alert(car.id);
     return mod.present();
-
   }
-  SoldCar(car:any){
-    car.sold='true';
+  SoldCar(car: any) {
+    car.sold = 'true';
     alert(car.sold);
     this.dataSrv.Soldcar1(car);
   }
 
-
- /* searchResults: Cars[] = [];
+  /* searchResults: Cars[] = [];
     search() {
       this.searchResults = this.dataSrv.carList.filter((car) => {
         let matchesType = true;

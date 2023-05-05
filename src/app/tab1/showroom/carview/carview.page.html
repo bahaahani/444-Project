@@ -31,7 +31,10 @@
         </ion-item>
         <ion-item>
           <ion-label>Favorites:</ion-label>
-          <ion-toggle [(ngModel)]="isFavorited" (ionChange)="toggleFavorite()"></ion-toggle>
+          <ion-toggle
+            [(ngModel)]="isFavorited"
+            (ionChange)="toggleFavorite()"
+          ></ion-toggle>
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -40,10 +43,10 @@
   <ion-list>
     <ng-container *ngFor="let car of dataSrv.car|async">
       <!-- *ngIf="car.showroom==showid" -->
-      <ion-item >
+      <ion-item>
         <ion-card>
           <ion-card-header>
-            <img src="{{car.image}}" alt="">
+            <img src="{{car.image}}" alt="" />
             <ion-card-title>{{car.model}}</ion-card-title>
             <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
             <p>{{car.specifications}}</p>
@@ -58,10 +61,12 @@
             <p>Price: {{car.price}}</p>
           </ion-card-content>
           <ion-buttons>
-            <ion-button fill="clear" color="primary">  <!-- (click)="viewCar(car)" -->
+            <ion-button fill="clear" color="primary">
+              <!-- (click)="viewCar(car)" -->
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-button>
-            <ion-button > <!-- (click)="addToFavorites(car)"-->
+            <ion-button>
+              <!-- (click)="addToFavorites(car)"-->
               <ion-icon name="heart"></ion-icon>Favorite
             </ion-button>
             <!-- <ion-button (click)="requestTestDrive(car)"> -->

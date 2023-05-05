@@ -9,8 +9,8 @@ describe('AddAdminPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddAdminPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [AddAdminPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddAdminPage);

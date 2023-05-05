@@ -9,7 +9,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./carview.page.scss'],
 })
 export class CarviewPage implements OnInit {
-
   car!: Cars;
   showroom!: ShowRooms;
   isFavorited: boolean = false;
@@ -19,11 +18,11 @@ export class CarviewPage implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public router: Router,
-    public dataSrv: CarService,
+    public dataSrv: CarService
   ) {}
 
   search() {
-    console.log("Search button clicked");
+    console.log('Search button clicked');
   }
 
   price!: number;
@@ -36,7 +35,7 @@ export class CarviewPage implements OnInit {
   manufacturer!: string;
   type!: string;
 
-  ngOnInit() {};
+  ngOnInit() {}
 
   toggleFavorite() {
     // this.isFavorited = !this.isFavorited;
@@ -61,4 +60,3 @@ export class CarviewPage implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
-

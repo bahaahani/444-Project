@@ -3,7 +3,6 @@
     <ion-title slot="start">showroom </ion-title>
     <!--<ion-button fill="clear" routerLink="/tabs2/tab1Admin"><ion-icon name="home"></ion-icon> </ion-button>-->
     <ion-title slot="end" color="medium">Admin View</ion-title>
-    
   </ion-toolbar>
 </ion-header>
 
@@ -61,47 +60,46 @@
   <!-- //ORIGINALLY -->
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addnewcar()">
-    <ion-icon name="add"></ion-icon>
+      <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-    </ion-fab>
-    
+  </ion-fab>
+
   <!--  where         cardisp2 -->
   <ion-list>
+    <ng-container *ngFor="let car of dataSrv.car|async">
+      <ion-item *ngIf="car.showroom==shoowid||car.sold=='false'">
+        <ion-card>
+          <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>
+          <ion-card-header>
+            <img src="{{car.image}}" alt="" />
+            <ion-card-title>{{car.model}}</ion-card-title>
 
-    <ng-container  *ngFor="let car of dataSrv.car|async" >
-    <ion-item *ngIf="car.showroom==shoowid||car.sold=='false'">
-      <ion-card>
-        <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>
-        <ion-card-header>
-          <img src="{{car.image}}" alt="">
-          <ion-card-title>{{car.model}}</ion-card-title>
-        
-          <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
-          <p>{{car.specifications}}</p>
-        </ion-card-header>
-        <ion-card-content>
-          <h1>Color: {{car.color}}</h1>
-          <h1>Mileage: {{car.mileage}}</h1>
-          <h1>Features:</h1>
-          <ul>
-            <li *ngFor="let feature of car.features">{{feature}}</li>
-          </ul>          
-          <p>Price: {{car.price}}</p>
-        </ion-card-content>
-        <ion-buttons>
-          <ion-button fill="clear" color="primary">
-            <ion-icon name="arrow-forward"></ion-icon>
-          </ion-button>
-          <ion-button color="danger" (click)="deletecar(car)">
-            <ion-icon name="close-circle"></ion-icon>Delete
-          </ion-button>
-          <ion-button color="success" (click)="openedit(car)">
-            <ion-icon name="pencil"></ion-icon>Edit
-          </ion-button>
-        </ion-buttons>
-      </ion-card>
-    </ion-item>
-   <!-- <ion-item *ngIf="car.showroom==shoowid||car.sold=='true'">
+            <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
+            <p>{{car.specifications}}</p>
+          </ion-card-header>
+          <ion-card-content>
+            <h1>Color: {{car.color}}</h1>
+            <h1>Mileage: {{car.mileage}}</h1>
+            <h1>Features:</h1>
+            <ul>
+              <li *ngFor="let feature of car.features">{{feature}}</li>
+            </ul>
+            <p>Price: {{car.price}}</p>
+          </ion-card-content>
+          <ion-buttons>
+            <ion-button fill="clear" color="primary">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-button>
+            <ion-button color="danger" (click)="deletecar(car)">
+              <ion-icon name="close-circle"></ion-icon>Delete
+            </ion-button>
+            <ion-button color="success" (click)="openedit(car)">
+              <ion-icon name="pencil"></ion-icon>Edit
+            </ion-button>
+          </ion-buttons>
+        </ion-card>
+      </ion-item>
+      <!-- <ion-item *ngIf="car.showroom==shoowid||car.sold=='true'">
       <ion-card style="background-color:gray;">
         <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>
         <ion-card-header>
@@ -134,7 +132,6 @@
       </ion-card>
     </ion-item>
 -->
-  </ng-container>
+    </ng-container>
   </ion-list>
- 
 </ion-content>

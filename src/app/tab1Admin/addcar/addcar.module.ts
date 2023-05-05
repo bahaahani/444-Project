@@ -9,12 +9,7 @@ import { AddcarPageRoutingModule } from './addcar-routing.module';
 import { AddcarPage } from './addcar.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AddcarPageRoutingModule
-  ],
-  declarations: [AddcarPage]
+  imports: [CommonModule, FormsModule, IonicModule, AddcarPageRoutingModule],
+  declarations: [AddcarPage],
 })
 export class AddcarPageModule {}

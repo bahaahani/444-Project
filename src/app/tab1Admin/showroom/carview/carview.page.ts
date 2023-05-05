@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carview.page.scss'],
 })
 export class CarviewPage implements OnInit {
-
   search() {
-    console.log("Search button clicked");
+    console.log('Search button clicked');
   }
 
   price!: number;
@@ -20,11 +19,8 @@ export class CarviewPage implements OnInit {
   mileage!: number;
   manufacturer!: string;
   type!: string;
-  
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

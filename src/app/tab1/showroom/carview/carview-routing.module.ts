@@ -6,8 +6,8 @@ import { CarviewPage } from './carview.page';
 const routes: Routes = [
   {
     path: '',
-    component: CarviewPage
-  }
+    component: CarviewPage,
+  },
 ];
 
 @NgModule({

@@ -4,51 +4,59 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () =>
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
     path: '',
-    loadChildren: () => import('./tabsAdmin/tabs2.module').then(m => m.TabsPageModule)
+    loadChildren: () =>
+      import('./tabsAdmin/tabs2.module').then((m) => m.TabsPageModule),
   },
 
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () =>
+      import('./signup/signup.module').then((m) => m.SignupPageModule),
   },
   {
     path: 'edit',
-    loadChildren: () => import('./tab1Admin/edit/edit.module').then( m => m.EditPageModule)
-  },  {
+    loadChildren: () =>
+      import('./tab1Admin/edit/edit.module').then((m) => m.EditPageModule),
+  },
+  {
     path: 'addcar',
-    loadChildren: () => import('./tab1Admin/addcar/addcar.module').then( m => m.AddcarPageModule)
+    loadChildren: () =>
+      import('./tab1Admin/addcar/addcar.module').then(
+        (m) => m.AddcarPageModule
+      ),
   },
   {
     path: 'add-admin',
-    loadChildren: () => import('./tab3Admin/add-admin/add-admin.module').then( m => m.AddAdminPageModule)
+    loadChildren: () =>
+      import('./tab3Admin/add-admin/add-admin.module').then(
+        (m) => m.AddAdminPageModule
+      ),
   },
-
-
-  
- 
-
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

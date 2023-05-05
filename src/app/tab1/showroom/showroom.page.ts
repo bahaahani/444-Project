@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService,Car } from '../../car.service';
+import { CarService, Car } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-showroom',
@@ -8,19 +8,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ShowroomPage implements OnInit {
   public carList: Car[] = [];
-  shoowid:any;
-  constructor(public dataSrv:CarService, private route:ActivatedRoute) {
-   this.shoowid=this.route.snapshot.paramMap.get('id');
+  shoowid: any;
+  constructor(public dataSrv: CarService, private route: ActivatedRoute) {
+    this.shoowid = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {
-   // this.carList = this.dataSrv.carList;
-   // const id = this.route.snapshot.paramMap.get('id');
-
+    // this.carList = this.dataSrv.carList;
+    // const id = this.route.snapshot.paramMap.get('id');
   }
   searchResults: Car[] = [];
-    search() {
-      this.searchResults = this.dataSrv.carList.filter((car: { type: string; manufacturer: string; model: string; color: string; mileage: number; price: number; }) => {
+  search() {
+    this.searchResults = this.dataSrv.carList.filter(
+      (car: {
+        type: string;
+        manufacturer: string;
+        model: string;
+        color: string;
+        mileage: number;
+        price: number;
+      }) => {
         let matchesType = true;
         let matchesManufacturer = true;
         let matchesModel = true;
@@ -29,37 +36,56 @@ export class ShowroomPage implements OnInit {
         let matchesEngineSpecs = true;
         let matchesNumSeats = true;
         let matchesPrice = true;
-  
+
         if (this.type && this.type !== car.type) {
           matchesType = false;
         }
-  
-        if (this.manufacturer && !car.manufacturer.toLowerCase().includes(this.manufacturer.toLowerCase())) {
+
+        if (
+          this.manufacturer &&
+          !car.manufacturer
+            .toLowerCase()
+            .includes(this.manufacturer.toLowerCase())
+        ) {
           matchesManufacturer = false;
         }
-  
-        if (this.model && !car.model.toLowerCase().includes(this.model.toLowerCase())) {
+
+        if (
+          this.model &&
+          !car.model.toLowerCase().includes(this.model.toLowerCase())
+        ) {
           matchesModel = false;
         }
-  
-        if (this.color && !car.color.toLowerCase().includes(this.color.toLowerCase())) {
+
+        if (
+          this.color &&
+          !car.color.toLowerCase().includes(this.color.toLowerCase())
+        ) {
           matchesColor = false;
         }
-  
+
         if (this.mileage && car.mileage > this.mileage) {
           matchesMileage = false;
         }
-  
+
         if (this.price && car.price > this.price) {
           matchesPrice = false;
         }
-  
-        return matchesType && matchesManufacturer && matchesModel && matchesColor && matchesMileage && matchesEngineSpecs && matchesNumSeats && matchesPrice;
-      });
-    }
-  
-  
-  
+
+        return (
+          matchesType &&
+          matchesManufacturer &&
+          matchesModel &&
+          matchesColor &&
+          matchesMileage &&
+          matchesEngineSpecs &&
+          matchesNumSeats &&
+          matchesPrice
+        );
+      }
+    );
+  }
+
   price!: number;
   numSeats!: number;
   numDoors!: number;
@@ -69,5 +95,4 @@ export class ShowroomPage implements OnInit {
   mileage!: number;
   manufacturer!: string;
   type!: string;
-  
 }

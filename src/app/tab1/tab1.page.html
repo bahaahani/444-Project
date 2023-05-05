@@ -1,25 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary" mode="md">
-    <ion-title>      View Showroom   
-    <ion-icon name="chevron-down-outline"></ion-icon>  
+    <ion-title>
+      View Showroom
+      <ion-icon name="chevron-down-outline"></ion-icon>
     </ion-title>
-    
-    
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content>
-<!-- HTML code for the button -->
+  <!-- HTML code for the button -->
 
   <ion-item>
     <ion-title>Search</ion-title>
-    <ion-searchbar debounce="800" animated="true"  [(ngModel)]="searchTerm" (ionInput)="onSearchInput($event)"></ion-searchbar>
+    <ion-searchbar
+      debounce="800"
+      animated="true"
+      [(ngModel)]="searchTerm"
+      (ionInput)="onSearchInput($event)"
+    ></ion-searchbar>
   </ion-item>
-  <ion-slides pager="true" autoplay="true" keyboard="true" class="slide-container" >
+  <ion-slides
+    pager="true"
+    autoplay="true"
+    keyboard="true"
+    class="slide-container"
+  >
     <ion-slide *ngFor="let image of this.carService.showroom | async">
-      <img src="{{image.image}}" class="slide-image">
+      <img src="{{image.image}}" class="slide-image" />
     </ion-slide>
   </ion-slides>
 
@@ -27,7 +34,7 @@
 
   <ion-item *ngFor="let filter of filteredShowrooms ">
     <ion-thumbnail>
-      <img src="{{filter.image}}">
+      <img src="{{filter.image}}" />
     </ion-thumbnail>
     <ion-label>
       <h2>{{filter.name}}</h2>
@@ -43,42 +50,45 @@
       <ion-card-subtitle>{{showroom.address}}</ion-card-subtitle>
       <ion-card-title>{{showroom.name}}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       <p>Phone Number: {{showroom.phone}}</p>
       <ion-grid>
         <ion-row>
           <ion-col *ngFor="let star of [1, 2, 3, 4, 5]">
-            <ion-icon name="star" color="dark" [style.opacity]="star <= showroom.rating ? '1' : '0.3'"></ion-icon>
+            <ion-icon
+              name="star"
+              color="dark"
+              [style.opacity]="star <= showroom.rating ? '1' : '0.3'"
+            ></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
       <p>Distance: {{showroom.distance}}</p>
     </ion-card-content>
-  
+
     <ion-row>
       <ion-col>
-        <ion-button routerLink="showroom/{{ showroom.id }}" expand="block">View Details</ion-button>
+        <ion-button routerLink="showroom/{{ showroom.id }}" expand="block"
+          >View Details</ion-button
+        >
         <!-- {{ showroom.id }} -->
       </ion-col>
     </ion-row>
   </ion-card>
-  
 
   <!-- this card should update with the slider -->
 
   <ion-list>
     <ion-list-header class="ion-no-margin-bottom">
       <ion-label>
-       <h4>
-         Other Showrooms
-      </h4> 
-      <p>Discover more showrooms</p>
+        <h4>Other Showrooms</h4>
+        <p>Discover more showrooms</p>
       </ion-label>
     </ion-list-header>
     <ion-item lines="none" *ngFor="let showroom of carService.showroom|async">
       <ion-thumbnail slot="start">
-        <img src="{{showroom.image}}">
+        <img src="{{showroom.image}}" />
       </ion-thumbnail>
       <ion-label>
         <h1>{{showroom.name}}</h1>
@@ -87,15 +97,20 @@
         <ion-grid>
           <ion-row>
             <ion-col *ngFor="let star of [1, 2, 3, 4, 5]">
-              <ion-icon name="star" color="dark" [style.opacity]="star <= showroom.rating ? '1' : '0.3'"></ion-icon>
+              <ion-icon
+                name="star"
+                color="dark"
+                [style.opacity]="star <= showroom.rating ? '1' : '0.3'"
+              ></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
         <p>Distance: {{showroom.distance}}</p>
-        </ion-label>
-        <ion-button routerLink="showroom/{{ showroom.id }}">View details</ion-button> 
-        <!-- Currently doesnt work!!! -->
+      </ion-label>
+      <ion-button routerLink="showroom/{{ showroom.id }}"
+        >View details</ion-button
+      >
+      <!-- Currently doesnt work!!! -->
     </ion-item>
-    
   </ion-list>
 </ion-content>

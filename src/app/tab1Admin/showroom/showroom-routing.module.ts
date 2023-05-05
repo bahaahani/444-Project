@@ -6,12 +6,13 @@ import { ShowroomPage } from './showroom.page';
 const routes: Routes = [
   {
     path: '',
-    component: ShowroomPage
+    component: ShowroomPage,
   },
   {
     path: 'carview',
-    loadChildren: () => import('./carview/carview.module').then( m => m.CarviewPageModule)
-  }
+    loadChildren: () =>
+      import('./carview/carview.module').then((m) => m.CarviewPageModule),
+  },
 ];
 
 @NgModule({

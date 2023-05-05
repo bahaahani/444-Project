@@ -9,30 +9,32 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1Admin',
-        loadChildren: () => import('../tab1Admin/tab1.module').then(m => m.Tab1PageModule)
+        loadChildren: () =>
+          import('../tab1Admin/tab1.module').then((m) => m.Tab1PageModule),
       },
       {
         path: 'tab2Admin',
-        loadChildren: () => import('../tab2Admin/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () =>
+          import('../tab2Admin/tab2.module').then((m) => m.Tab2PageModule),
       },
       {
         path: 'tab3Admin',
-        loadChildren: () => import('../tab3Admin/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () =>
+          import('../tab3Admin/tab3.module').then((m) => m.Tab3PageModule),
       },
-     
-      
+
       {
         path: '',
         redirectTo: '/tabs2/tab1',
-        pathMatch: 'full'
-      }
-    ]
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: '',
     redirectTo: '/tabs2/tab1',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

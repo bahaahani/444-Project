@@ -1,14 +1,14 @@
-ion-header{
-    ion-icon{
-      font-size: 1rem;
-    }
-    ion-title{
-      font-weight: bold;
-    }
+ion-header {
+  ion-icon {
+    font-size: 1rem;
+  }
+  ion-title {
+    font-weight: bold;
+  }
 }
 .slide-container {
   height: 40%; /* set a fixed height */
-  margin:20px;
+  margin: 20px;
   border-radius: 5px;
 }
 .slide-image {
@@ -26,8 +26,7 @@ ion-header{
   }
   .slide-container {
     height: 50%; /* set a fixed height */
-    margin:20px;
+    margin: 20px;
     border-radius: 5px;
   }
 }
-

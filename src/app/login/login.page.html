@@ -1,9 +1,10 @@
 <ion-content>
-
   <ion-header>
     <ion-toolbar color="medium">
       <ion-title align="center">Log In</ion-title>
-      <ion-button fill="clear" routerLink="/home" slot="start" color="dark"><ion-icon name="home"></ion-icon> </ion-button>
+      <ion-button fill="clear" routerLink="/home" slot="start" color="dark"
+        ><ion-icon name="home"></ion-icon>
+      </ion-button>
     </ion-toolbar>
   </ion-header>
   <div class="signin-overlay ion-padding">
@@ -25,21 +26,26 @@
             <ion-input type="password" [(ngModel)]="password"></ion-input>
           </ion-item>
           <ion-item lines="none">
-     <ion-button (click)="send()" fill="clear" color="medium" slot="end"> Forget Password?</ion-button>
-     </ion-item>
+            <ion-button (click)="send()" fill="clear" color="medium" slot="end">
+              Forget Password?</ion-button
+            >
+          </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
-          <ion-button (click)="login()" expand="block" color="primary" shape='round'>Sign In</ion-button>
-          <p style="color:black">Don't have an account? <a routerLink="/signup">Sign up here</a></p>
+          <ion-button
+            (click)="login()"
+            expand="block"
+            color="primary"
+            shape="round"
+            >Sign In</ion-button
+          >
+          <p style="color: black">
+            Don't have an account? <a routerLink="/signup">Sign up here</a>
+          </p>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
-
-
-
-
 </ion-content>

@@ -9,12 +9,7 @@ import { AddAdminPageRoutingModule } from './add-admin-routing.module';
 import { AddAdminPage } from './add-admin.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AddAdminPageRoutingModule
-  ],
-  declarations: [AddAdminPage]
+  imports: [CommonModule, FormsModule, IonicModule, AddAdminPageRoutingModule],
+  declarations: [AddAdminPage],
 })
 export class AddAdminPageModule {}

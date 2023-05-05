@@ -9,8 +9,8 @@ describe('CarviewPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarviewPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [CarviewPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CarviewPage);

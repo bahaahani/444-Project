@@ -6,8 +6,8 @@ import { AddAdminPage } from './add-admin.page';
 const routes: Routes = [
   {
     path: '',
-    component: AddAdminPage
-  }
+    component: AddAdminPage,
+  },
 ];
 
 @NgModule({

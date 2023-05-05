@@ -9,12 +9,7 @@ import { ShowroomPageRoutingModule } from './showroom-routing.module';
 import { ShowroomPage } from './showroom.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ShowroomPageRoutingModule
-  ],
-  declarations: [ShowroomPage]
+  imports: [CommonModule, FormsModule, IonicModule, ShowroomPageRoutingModule],
+  declarations: [ShowroomPage],
 })
 export class ShowroomPageModule {}
