@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>      User Profile    </ion-title>
+   <ion-button slot="start" fill="clear" color="dark"> <ion-icon name="person-circle-outline" ></ion-icon></ion-button>
+   <ion-button slot="end" fill="clear" color="dark"> <ion-icon name="person-add-outline"slot="start" ></ion-icon> Create New Admin </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!--
+  [(ngModel)]="this.user.name"
+ [(ngModel)]="this.user.email"
+ [(ngModel)]="this.user.role"
+ [src]="this.user.image"
+ -->
+ 
+ <div style="width:100%;" align="center"  style="padding-top: 50px;">
+<div width="50%" style="border-radius:50%;"> 
+    <ion-img src="assets/userprofile2.jpg" style="border-radius:50%;width:50%;height:100px"></ion-img>
+</div>
+
+    <ion-list class="ion-text-center">
+      <ion-item color="light">
+        <ion-label>User Name</ion-label>
+        <ion-input type="text" [(ngModel)]="user.UserName" color="medium"></ion-input>
+        <ion-button fill="clear" (click)="Edit()"><ion-icon name='pencil'></ion-icon></ion-button>
+      </ion-item>
+      <ion-item color="light">
+        <ion-label>Phone Number</ion-label>
+        <ion-input type="text" [(ngModel)]="user.phone" color="medium"></ion-input>
+        <ion-button fill="clear"><ion-icon name='pencil'></ion-icon></ion-button>
+      </ion-item>
+      <ion-item color="light">
+        <ion-label>Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.Email" color="medium" readonly="true"></ion-input>
+     
+      </ion-item>
+    </ion-list>
+
+  <div align="center">
+    <ion-button color="light" (click)="LogOut()">Log Out <ion-icon name="log-in-outline"></ion-icon> </ion-button>
+    <ion-button color="light" (click)="deleteUser()">Delete Account</ion-button>
+  </div>
+
+</div>
+  
+</ion-content>

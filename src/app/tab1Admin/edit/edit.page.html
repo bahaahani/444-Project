@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title align="center">Edit Car Information</ion-title>
+   <!-- <ion-button (click)="close()" fill="clear" slot="start" color="light"><ion-icon name="home"></ion-icon>  </ion-button>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label color="medium">Type</ion-label>
+      <ion-select [(ngModel)]="car.type">
+        <ion-select-option value="Sedan">Sedan</ion-select-option>
+        <ion-select-option value="SUV">SUV</ion-select-option>
+        <ion-select-option value="Hatchback">Hatchback</ion-select-option>
+        <ion-select-option value="Sports">Sports</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Manufacturer:</ion-label>
+      <ion-input type="text" [(ngModel)]="car.manufacturer"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Model:</ion-label>
+      <ion-input type="text" [(ngModel)]="car.model"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Color:</ion-label>
+      <ion-input type="text" [(ngModel)]="car.color"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Mileage:</ion-label>
+      <ion-input type="number" [(ngModel)]="car.mileage"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="medium">Engine:</ion-label>
+      <ion-input type="text" [(ngModel)]="car.engine"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Engine Specifications:</ion-label>
+      <ion-input *ngFor="let item of try">{{item}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="newItem"></ion-input>
+      <ion-button item-end icon-only clear (click)="morespe()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!--<ion-item>
+      <ion-label>Engine Specifications</ion-label>
+      <ion-input type="text" [(ngModel)]="car.specifications"></ion-input>
+    </ion-item>-->
+    
+    <ion-item>
+      <ion-label color="medium">Number of Seats:</ion-label>
+      <ion-input type="number" [(ngModel)]="car.numberOfSeats"></ion-input>
+    </ion-item>
+     <!-- <ion-item>
+   <ion-label>Car Features</ion-label>
+      <ion-input type="text" [(ngModel)]="car.features"></ion-input>
+    </ion-item>--> 
+    <ion-item>
+      <ion-label color="medium">Car Features:</ion-label>
+      <ion-input *ngFor="let item of Features">{{item}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="newItem2"></ion-input>
+      <ion-button item-end icon-only clear (click)="morefet()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label color="medium">Price:</ion-label>
+      <ion-input type="number" [(ngModel)]="car.price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="medium">Image of Car:</ion-label>
+      <ion-input type="number" [(ngModel)]="car.image"></ion-input>
+    </ion-item>
+
+
+
+  </ion-list>
+  
+<ion-button shape="round" expand="block" (click)="edit()">Edit</ion-button>
+<ion-button shape="round" expand="block" (click)="close()">Cancel</ion-button>
+
+</ion-content>
