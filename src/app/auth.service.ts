@@ -138,7 +138,8 @@ export class AuthService implements OnInit {
     } else {
       this.auth
         .signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((res) => {
+          localStorage.setItem('uid', JSON.stringify(res.user!.uid));
           alert('login in succssfully');
           this.n.navigateForward('/tabs/tab1');
         })

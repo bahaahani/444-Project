@@ -78,9 +78,8 @@ export class CarService {
       })
     );
 
-    let uid = '6KDddN7LWpfePNiVmuIqx8vOEkf2';
     this.testDriveCollectionRef = this.afs.collection('testDrive', (ref) =>
-      ref.where('user', '==', uid)
+      ref.where('user', '==', this.getUid())
     );
     this.testDrive = this.testDriveCollectionRef.snapshotChanges().pipe(
       map((actions) => {
@@ -104,6 +103,10 @@ export class CarService {
     })
   )
 }*/
+
+  getUid(): string {
+    return JSON.parse(localStorage.getItem('uid')!);
+  }
 
   async deletecar1(id: string) {
     const alt = await this.a.create({
