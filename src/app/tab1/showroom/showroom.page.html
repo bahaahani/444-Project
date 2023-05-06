@@ -81,7 +81,7 @@
             <ion-button>
               <ion-icon name="heart"></ion-icon>Favorite
             </ion-button>
-            <ion-button>
+            <ion-button (click)="requestTestDrive(car)">
               <ion-icon name="share"></ion-icon>TEST DRIVE
             </ion-button>
           </ion-buttons>
@@ -102,7 +102,7 @@
           <h1>Features:</h1>
           <ul>
             <li *ngFor="let feature of car.features">{{feature}}</li>
-          </ul>          
+          </ul>
           <p>Price: {{car.price}}</p>
         </ion-card-content>
         <ion-buttons>
@@ -110,7 +110,7 @@
             <ion-icon name="arrow-forward"></ion-icon>
           </ion-button>
           </ion-buttons>
-         
+
       </ion-card>
     </ion-item>
 -->

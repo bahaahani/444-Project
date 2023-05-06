@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService, Car } from '../../car.service';
+import { CarService, Car, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-showroom',
@@ -11,6 +11,19 @@ export class ShowroomPage implements OnInit {
   shoowid: any;
   constructor(public dataSrv: CarService, private route: ActivatedRoute) {
     this.shoowid = this.route.snapshot.paramMap.get('id');
+  }
+
+  requestTestDrive(car: Cars) {
+    console.log(car);
+    console.log(this.dataSrv.getUid());
+    let testDrive: TestDrive = {
+      car: car.id!,
+      user: this.dataSrv.getUid(),
+      carModel: car.model,
+      status: 'pending',
+      date: new Date(),
+    };
+    this.dataSrv.testDriveCollectionRef.doc().set(testDrive);
   }
 
   ngOnInit() {
