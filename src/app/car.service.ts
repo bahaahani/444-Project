@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { DocumentReference } from '@angular/fire/compat/firestore';
-import { map, take } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
-import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Timestamp } from '@angular/fire/firestore';
+
 export interface ShowRooms {
   id?: string;
   name: string;
@@ -16,6 +16,7 @@ export interface ShowRooms {
   phone: string;
   rating: number;
 }
+
 export interface Cars {
   id?: string;
   color: string;
@@ -32,6 +33,16 @@ export interface Cars {
   type: string;
   sold: string;
 }
+
+export interface TestDrive {
+  id?: string;
+  user: string;
+  car: string;
+  carModel: string;
+  date: Date;
+  status: 'pending' | 'approved';
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -41,6 +52,8 @@ export class CarService {
   public car: Observable<Cars[]>;
   public carCollectionRef: AngularFirestoreCollection<Cars>;
   carList: any;
+  public testDrive: Observable<TestDrive[]>;
+  public testDriveCollectionRef: AngularFirestoreCollection<TestDrive>;
 
   constructor(public afs: AngularFirestore, public a: AlertController) {
     this.showroomsCollectionRef = this.afs.collection('showroom');
@@ -61,6 +74,21 @@ export class CarService {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
           return { id, ...data };
+        });
+      })
+    );
+
+    let uid = '6KDddN7LWpfePNiVmuIqx8vOEkf2';
+    this.testDriveCollectionRef = this.afs.collection('testDrive', (ref) =>
+      ref.where('user', '==', uid)
+    );
+    this.testDrive = this.testDriveCollectionRef.snapshotChanges().pipe(
+      map((actions) => {
+        return actions.map((a) => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          const date = (data.date as any as Timestamp).toDate();
+          return { id, ...data, date };
         });
       })
     );

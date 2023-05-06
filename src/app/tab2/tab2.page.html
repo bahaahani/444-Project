@@ -4,4 +4,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let t of dataSrv.testDrive | async">
+      <ion-card-header>
+        <ion-card-subtitle>{{ t.status }}</ion-card-subtitle>
+        <ion-card-title>{{ t.carModel }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content> {{ t.date | date }} </ion-card-content>
+      <ion-button fill="clear" color="danger" (click)="deleteTestDrive(t)"
+        >Delete</ion-button
+      >
+    </ion-card>
+  </ion-list>
+</ion-content>
