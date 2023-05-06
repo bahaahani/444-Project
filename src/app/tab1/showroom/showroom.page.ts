@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CarService, Car, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
+import { IonModal } from '@ionic/angular';
 @Component({
   selector: 'app-showroom',
   templateUrl: './showroom.page.html',
@@ -9,19 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 export class ShowroomPage implements OnInit {
   public carList: Car[] = [];
   shoowid: any;
+  testDriveDate = new Date();
   constructor(public dataSrv: CarService, private route: ActivatedRoute) {
     this.shoowid = this.route.snapshot.paramMap.get('id');
   }
 
-  requestTestDrive(car: Cars) {
-    console.log(car);
-    console.log(this.dataSrv.getUid());
+  @ViewChild(IonModal) testDriveDateModal: IonModal = {} as any;
+  selectDate() {
+    this.testDriveDateModal.present();
+  }
+  selected_car: Cars = {} as any;
+  requestTestDrive(e: any) {
     let testDrive: TestDrive = {
-      car: car.id!,
+      car: this.selected_car.id!,
       user: this.dataSrv.getUid(),
-      carModel: car.model,
+      carModel: this.selected_car.model,
       status: 'pending',
-      date: new Date(),
+      date: new Date(e.detail.value),
     };
     this.dataSrv.testDriveCollectionRef.doc().set(testDrive);
   }
