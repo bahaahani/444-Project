@@ -41,17 +41,28 @@
       <ion-input type="text" [(ngModel)]="car.engine"></ion-input>
     </ion-item>
 
+    <ion-item-group>
+
     <ion-item>
-      <ion-label color="medium">Engine Specifications:</ion-label>
-      <ion-input *ngFor="let item of try">{{item}}</ion-input>
+      <ion-label color="medium" align="center">Engine Specifications:</ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let x of try;let i=index">
+      <ion-label>{{x}}</ion-label>
+      <ion-button color="danger" (click)="remove2(i)">Delete</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label color="medium">Adding:</ion-label>
+     <!--  <ion-input *ngFor="let x of try2">{{x}}</ion-input>--> 
     </ion-item>
     <ion-item>
       <ion-input [(ngModel)]="newItem"></ion-input>
       <ion-button item-end icon-only clear (click)="morespe()">
         <ion-icon name="add"></ion-icon>
       </ion-button>
-    </ion-item>
+     </ion-item>
 
+</ion-item-group>
     <!--<ion-item>
       <ion-label>Engine Specifications</ion-label>
       <ion-input type="text" [(ngModel)]="car.specifications"></ion-input>
@@ -65,16 +76,27 @@
    <ion-label>Car Features</ion-label>
       <ion-input type="text" [(ngModel)]="car.features"></ion-input>
     </ion-item>-->
+   
+    <ion-item-group>
+      <ion-item>
+      <ion-label color="medium" align="center">Car Features:</ion-label>
+      </ion-item>
+    <ion-item *ngFor="let x of car.features;let i=index">
+      <ion-label>{{x}}</ion-label>
+      <ion-button color="danger" (click)="remove(i)">Delete</ion-button>
+    </ion-item>
     <ion-item>
-      <ion-label color="medium">Car Features:</ion-label>
-      <ion-input *ngFor="let item of Features">{{item}}</ion-input>
+      <ion-label color="medium">Adding:</ion-label>
+   <!--  <ion-input *ngFor="let item of Features2">{{item}}</ion-input>--> 
     </ion-item>
     <ion-item>
       <ion-input [(ngModel)]="newItem2"></ion-input>
       <ion-button item-end icon-only clear (click)="morefet()">
         <ion-icon name="add"></ion-icon>
       </ion-button>
-    </ion-item>
+     </ion-item>
+    </ion-item-group>
+    
 
     <ion-item>
       <ion-label color="medium">Price:</ion-label>
@@ -82,7 +104,7 @@
     </ion-item>
     <ion-item>
       <ion-label color="medium">Image of Car:</ion-label>
-      <ion-input type="number" [(ngModel)]="car.image"></ion-input>
+      <ion-input type="text" [(ngModel)]="car.image"></ion-input>
     </ion-item>
   </ion-list>
 

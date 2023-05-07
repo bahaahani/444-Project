@@ -93,7 +93,7 @@ export class CarService {
         },
       ],
     });
-    alert(id);
+  //  alert(id);
     alt.present();
   }
 
@@ -139,7 +139,7 @@ export class CarService {
   }
 
   updatecarinfo(car: any) {
-    alert(car.id);
+  //  alert(car.id);
     this.carCollectionRef.doc(car.id).update({
       color: car.color,
       engine: car.engine,
@@ -153,7 +153,8 @@ export class CarService {
       showroom: car.showroom,
       specifications: car.specifications,
       type: car.type,
-    });
+    }).then(()=>{alert('Successful Editing')});
+   
   }
 
   getCarsById(id: string): Observable<any> {

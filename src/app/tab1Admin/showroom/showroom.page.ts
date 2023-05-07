@@ -58,7 +58,7 @@ export class ShowroomPage implements OnInit {
         id: car.id,
       },
     });
-    alert(car.id);
+   // alert(car.id);
     return mod.present();
   }
   SoldCar(car: any) {

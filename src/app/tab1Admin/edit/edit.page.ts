@@ -12,6 +12,10 @@ export class EditPage implements OnInit {
   //test:Cars={}as Cars;;
   try: any[] = [];
   Features: any[] = [];
+
+  //try2:any[]=[];
+ // Features2:any[]=[];
+
   newItem = '';
   newItem2 = '';
   constructor(
@@ -24,6 +28,8 @@ export class EditPage implements OnInit {
     if (x) {
       this.d.getCar(x).subscribe((cararr) => {
         this.car = cararr;
+        this.Features=this.car.features;
+        this.try=this.car.specifications;
       });
       // this.test=this.d.getCar(x);
       // alert(this.test.type);
@@ -48,7 +54,7 @@ export class EditPage implements OnInit {
 
   morefet() {
     if (this.newItem2 !== '') {
-      this.try.push(this.newItem2);
+      this.Features.push(this.newItem2);
       this.newItem2 = '';
     } else {
       alert('Can not add empty item');
@@ -56,7 +62,16 @@ export class EditPage implements OnInit {
   }
 
   edit() {
-    alert(this.car.id);
+  //  alert(this.car.id);
+    this.car.features=this.Features;
+    this.car.specifications=this.try;
     this.d.updatecarinfo(this.car);
+  }
+  remove(i:number){
+    this.Features.splice(i,1);
+  }
+
+  remove2(i:number){
+    this.try.splice(i,1);
   }
 }
