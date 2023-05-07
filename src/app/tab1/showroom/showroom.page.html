@@ -54,11 +54,10 @@
 
   <ion-button expand="block" (click)="search()">Search</ion-button>
 
-  <!-- //ORIGINALLY -->
   <ion-list>
     <ng-container *ngFor="let car of dataSrv.car|async">
       <ion-item *ngIf="car.showroom==shoowid||car.sold=='false'">
-        <ion-card>
+        <ion-card style="width: 100%">
           <ion-card-header>
             <img src="{{car.image}}" alt="" />
             <ion-card-title>{{car.model}}</ion-card-title>
@@ -81,39 +80,23 @@
             <ion-button>
               <ion-icon name="heart"></ion-icon>Favorite
             </ion-button>
-            <ion-button>
+            <ion-button (click)="selected_car = car; selectDate()">
               <ion-icon name="share"></ion-icon>TEST DRIVE
             </ion-button>
           </ion-buttons>
         </ion-card>
       </ion-item>
-
-      <!-- <ion-item *ngIf="car.showroom==shoowid&&car.sold=='true'">
-      <ion-card style="background-color:gray">
-        <ion-card-header>
-          <img src="{{car.image}}" alt="">
-          <ion-card-title>{{car.model}}</ion-card-title>
-          <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
-          <p>{{car.specifications}}</p>
-        </ion-card-header>
-        <ion-card-content>
-          <h1>Color: {{car.color}}</h1>
-          <h1>Mileage: {{car.mileage}}</h1>
-          <h1>Features:</h1>
-          <ul>
-            <li *ngFor="let feature of car.features">{{feature}}</li>
-          </ul>          
-          <p>Price: {{car.price}}</p>
-        </ion-card-content>
-        <ion-buttons>
-          <ion-button fill="clear" color="primary">
-            <ion-icon name="arrow-forward"></ion-icon>
-          </ion-button>
-          </ion-buttons>
-         
-      </ion-card>
-    </ion-item>
--->
     </ng-container>
   </ion-list>
+
+  <ion-modal [cssClass]="'bottom-end'">
+    <ng-template>
+      <ion-datetime
+        presentation="date"
+        size="cover"
+        [showDefaultButtons]="true"
+        (ionChange)="requestTestDrive($event)"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
 </ion-content>
