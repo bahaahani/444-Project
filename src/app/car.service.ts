@@ -31,7 +31,7 @@ export interface Cars {
   showroom: number;
   specifications: any;
   type: string;
-  sold: string;
+  sold: boolean
 }
 
 export interface TestDrive {

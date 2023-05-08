@@ -54,9 +54,11 @@
 
   <ion-button expand="block" (click)="search()">Search</ion-button>
 
+
+
   <ion-list>
     <ng-container *ngFor="let car of dataSrv.car|async">
-      <ion-item *ngIf="car.showroom==shoowid||car.sold=='false'">
+      <ion-item *ngIf="car.showroom==shoowid&&car.sold==false">
         <ion-card style="width: 100%">
           <ion-card-header>
             <img src="{{car.image}}" alt="" />

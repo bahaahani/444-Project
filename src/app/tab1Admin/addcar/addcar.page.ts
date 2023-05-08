@@ -59,6 +59,7 @@ export class AddcarPage implements OnInit {
     this.car.specifications = this.speci;
     this.car.features = this.Features;
     this.car.showroom = this.showid;
+    this.car.sold=false;
     this.d.addnewcar1(this.car).then(() => {
       alt.present();
       this.mod.dismiss();

@@ -64,10 +64,25 @@
     </ion-fab-button>
   </ion-fab>
 
-  <!--  where         cardisp2 -->
-  <ion-list>
-    <ng-container *ngFor="let car of dataSrv.car|async">
-      <ion-item *ngIf="car.showroom==shoowid||car.sold=='false'">
+  <ion-segment [(ngModel)]="Adm">
+    <ion-segment-button value="View">
+      View
+    </ion-segment-button>
+    <ion-segment-button value="Sold">
+      Sold
+    </ion-segment-button>
+    <ion-segment-button value="History">
+      History
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div [ngSwitch]="Adm">
+     
+  <ion-list *ngSwitchCase="'View'">
+   <ng-container *ngFor="let car of dataSrv.car|async">
+      <!--  If the car is not sold  -->
+      <ion-item *ngIf="car.showroom==shoowid&&car.sold==false">
         <ion-card>
           <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>
           <ion-card-header>
@@ -99,9 +114,14 @@
           </ion-buttons>
         </ion-card>
       </ion-item>
-      <!-- <ion-item *ngIf="car.showroom==shoowid||car.sold=='true'">
-      <ion-card style="background-color:gray;">
-        <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>
+      </ng-container>
+</ion-list>
+      <ion-list  *ngSwitchCase="'Sold'">
+        <ng-container *ngFor="let car of dataSrv.car|async">
+       <!--If the car sold  --> 
+       <ion-item *ngIf="car.showroom==shoowid&&car.sold==true">
+      <ion-card >
+    <!-- <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>-->
         <ion-card-header>
           <img src="{{car.image}}" alt="">
           <ion-card-title>{{car.model}}</ion-card-title>
@@ -131,7 +151,50 @@
         </ion-buttons>
       </ion-card>
     </ion-item>
--->
-    </ng-container>
-  </ion-list>
+     </ng-container>
+ </ion-list>
+
+
+ <ion-list  *ngSwitchCase="'History'">
+  <ng-container *ngFor="let car of dataSrv.car|async">
+ <!--If the car sold  --> 
+ <ion-item *ngIf="car.showroom==shoowid&&car.sold==true">
+<ion-card >
+<!-- <ion-button color="danger" (click)="SoldCar(car)">Sold</ion-button>-->
+  <ion-card-header>
+    <img src="{{car.image}}" alt="">
+    <ion-card-title>{{car.model}}</ion-card-title>
+  
+    <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
+    <p>{{car.specifications}}</p>
+  </ion-card-header>
+  <ion-card-content>
+    <h1>Color: {{car.color}}</h1>
+    <h1>Mileage: {{car.mileage}}</h1>
+    <h1>Features:</h1>
+    <ul>
+      <li *ngFor="let feature of car.features">{{feature}}</li>
+    </ul>          
+    <p>Price: {{car.price}}</p>
+  </ion-card-content>
+  <ion-buttons>
+    <ion-button fill="clear" color="primary">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" (click)="deletecar(car)">
+      <ion-icon name="close-circle"></ion-icon>Delete
+    </ion-button>
+    <ion-button color="success" (click)="openedit(car)">
+      <ion-icon name="pencil"></ion-icon>Edit
+    </ion-button>
+  </ion-buttons>
+</ion-card>
+</ion-item>
+</ng-container>
+</ion-list>
+
+
+
+   
+ </div>
 </ion-content>

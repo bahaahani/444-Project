@@ -9,6 +9,7 @@ import { IonModal } from '@ionic/angular';
 })
 export class ShowroomPage implements OnInit {
   public carList: Car[] = [];
+  Usr='View';
   shoowid: any;
   testDriveDate = new Date();
   constructor(public dataSrv: CarService, private route: ActivatedRoute) {

@@ -14,7 +14,7 @@ export class ShowroomPage implements OnInit {
   shoowid: any;
   cardisp2: any[] = [];
   //Shworoom2:any;
-
+Adm='View';
   constructor(
     public dataSrv: CarService,
     private route: ActivatedRoute,
@@ -52,6 +52,7 @@ export class ShowroomPage implements OnInit {
     // this.dataSrv.addnewcar1();
   }
   async openedit(car: any) {
+    alert(car.id);
     const mod = await this.m.create({
       component: EditPage,
       componentProps: {
@@ -62,7 +63,7 @@ export class ShowroomPage implements OnInit {
     return mod.present();
   }
   SoldCar(car: any) {
-    car.sold = 'true';
+    car.sold =true;
     alert(car.sold);
     this.dataSrv.Soldcar1(car);
   }
