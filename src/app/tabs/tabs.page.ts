@@ -7,20 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage {
-  constructor(public afAuth:AngularFireAuth,public router:Router) {
-    const authObserver = afAuth.authState.subscribe( 
-      user => {
-       if (user) {
-        //alert("User signed in");
+  constructor(public afAuth: AngularFireAuth, public router: Router) {
+    const authObserver = afAuth.authState.subscribe((user) => {
+      if (user && user.uid) {
         this.router.navigate(['/tabs/tab1']);
         authObserver.unsubscribe();
-       } else {
-        //alert("User signed OUT");
-        this.router.navigate(['/home']);  //login page
+      } else {
+        this.router.navigate(['/home']); //login page
         authObserver.unsubscribe();
-       }
-      });
-
-
+      }
+    });
   }
 }

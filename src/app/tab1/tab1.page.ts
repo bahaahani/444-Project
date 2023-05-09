@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService, users } from '../auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
-import { CarService, Car, ShowRooms } from '../car.service';
+import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { CarService, ShowRooms } from '../car.service';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-tab1',
@@ -37,9 +34,5 @@ export class Tab1Page {
     console.log(event.detail);
   }
 
-  constructor(
-    public authService: AuthService,
-    public carService: CarService,
-    private navCtrl: NavController
-  ) {}
+  constructor(public authService: AuthService, public carService: CarService) {}
 }

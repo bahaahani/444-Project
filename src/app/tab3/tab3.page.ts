@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, users } from '../auth.service';
+import { AuthService, user } from '../auth.service';
 import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-tab3',
@@ -8,7 +8,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class Tab3Page implements OnInit {
   userid: any;
-  user: users = {} as users;
+  user: user = {} as user;
   constructor(public d: AuthService, public t: ToastController) {
     this.d.auth.authState.subscribe((user) => {
       if (user) {
@@ -24,7 +24,7 @@ export class Tab3Page implements OnInit {
   ngOnInit(): void {}
 
   LogOut() {
-    this.d.logOut1();
+    this.d.logOut();
   }
   deleteUser() {}
   async Edit() {

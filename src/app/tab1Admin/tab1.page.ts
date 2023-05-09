@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService, users } from '../auth.service';
+import { AuthService, user } from '../auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { CarService, Car, ShowRooms } from '../car.service';

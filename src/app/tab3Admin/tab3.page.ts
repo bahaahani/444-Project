@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, users } from '../auth.service';
+import { AuthService, user } from '../auth.service';
 
 @Component({
   selector: 'app-tab3',
@@ -8,7 +8,7 @@ import { AuthService, users } from '../auth.service';
 })
 export class Tab3Page implements OnInit {
   userid: any;
-  user: users = {} as users;
+  user: user = {} as user;
   constructor(public d: AuthService) {
     this.d.auth.authState.subscribe((user) => {
       if (user) {
@@ -24,7 +24,7 @@ export class Tab3Page implements OnInit {
   ngOnInit(): void {}
 
   LogOut() {
-    this.d.logOut1();
+    this.d.logOut();
   }
   deleteUser() {}
   Edit() {
