@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CarService, Car, Cars, ShowRooms } from 'src/app/car.service';
-import { NavController } from '@ionic/angular';
+import { CarService, Cars, ShowRooms } from 'src/app/car.service';
 
 @Component({
   selector: 'app-carview',

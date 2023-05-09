@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CarService, Car, Cars, TestDrive } from '../../car.service';
+import { CarService, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, IonModal } from '@ionic/angular';
 import {
@@ -16,7 +16,6 @@ import {
   styleUrls: ['./showroom.page.scss'],
 })
 export class ShowroomPage implements OnInit {
-  public carList: Car[] = [];
   Usr = 'View';
   shoowid: any;
   testDriveDate = new Date();
@@ -93,7 +92,7 @@ export class ShowroomPage implements OnInit {
     // this.carList = this.dataSrv.carList;
     // const id = this.route.snapshot.paramMap.get('id');
   }
-  searchResults: Car[] = [];
+  searchResults: Cars[] = [];
   search() {
     this.searchResults = this.dataSrv.carList.filter(
       (car: {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService, Car } from '../../car.service';
+import { CarService } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { EditPage } from '../edit/edit.page';
@@ -14,7 +14,7 @@ export class ShowroomPage implements OnInit {
   shoowid: any;
   cardisp2: any[] = [];
   //Shworoom2:any;
-Adm='View';
+  Adm = 'View';
   constructor(
     public dataSrv: CarService,
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ Adm='View';
     const carsdis:any[]=[];
     querySnapshot.forEach((doc) => {
     carsdis.push(doc.data());
-     
+
     });
     this.cardisp2=carsdis;
   });
@@ -59,11 +59,11 @@ Adm='View';
         id: car.id,
       },
     });
-   // alert(car.id);
+    // alert(car.id);
     return mod.present();
   }
   SoldCar(car: any) {
-    car.sold =true;
+    car.sold = true;
     alert(car.sold);
     this.dataSrv.Soldcar1(car);
   }
@@ -79,37 +79,37 @@ Adm='View';
         let matchesEngineSpecs = true;
         let matchesNumSeats = true;
         let matchesPrice = true;
-  
+
         if (this.type && this.type !== car.type) {
           matchesType = false;
         }
-  
+
         if (this.manufacturer && !car.manufacturer.toLowerCase().includes(this.manufacturer.toLowerCase())) {
           matchesManufacturer = false;
         }
-  
+
         if (this.model && !car.model.toLowerCase().includes(this.model.toLowerCase())) {
           matchesModel = false;
         }
-  
+
         if (this.color && !car.color.toLowerCase().includes(this.color.toLowerCase())) {
           matchesColor = false;
         }
-  
+
         if (this.mileage && car.mileage > this.mileage) {
           matchesMileage = false;
         }
-  
+
         if (this.price && car.price > this.price) {
           matchesPrice = false;
         }
-  
+
         return matchesType && matchesManufacturer && matchesModel && matchesColor && matchesMileage && matchesEngineSpecs && matchesNumSeats && matchesPrice;
       });
     }
-  
-  
-  
+
+
+
   price!: number;
   numSeats!: number;
   numDoors!: number;

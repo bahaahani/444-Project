@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { AuthService, user } from '../auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 import { NavController } from '@ionic/angular';
-import { CarService, Car, ShowRooms } from '../car.service';
+import { CarService, ShowRooms } from '../car.service';
 import { Observable } from 'rxjs';
 
 @Component({
