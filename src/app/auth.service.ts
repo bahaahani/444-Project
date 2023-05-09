@@ -53,15 +53,19 @@ export class AuthService {
       .then((res) => {
         const uid = res.user!.uid;
         localStorage.setItem('uid', JSON.stringify(uid));
-        docData(doc(getFirestore(), 'USERS', uid)).forEach((user) => {
-          if (user['admin']) {
-            alert('login in succssfully');
-            this.navCtrl.navigateForward('/tabs2/tab1Admin');
-          } else {
-            alert('login in succssfully');
-            // this.navCtrl.navigateForward('/tabs/tab1');
+        const sub = docData(doc(getFirestore(), 'USERS', uid)).subscribe(
+          (user) => {
+            if (user['admin']) {
+              alert('login in succssfully admin');
+              this.navCtrl.navigateForward('/tabs2/tab1Admin');
+              sub.unsubscribe();
+            } else {
+              alert('login in succssfully user');
+              this.navCtrl.navigateForward('/tabs/tab1');
+              sub.unsubscribe();
+            }
           }
-        });
+        );
       })
       .catch((err) => {
         alert(err);
