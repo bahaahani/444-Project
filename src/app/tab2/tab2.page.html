@@ -13,7 +13,14 @@
       </ion-card-header>
       <ion-card-content>
         <ion-label> {{ t.date | timestamp | date }} </ion-label>
-        <br />
+
+        <ng-container *ngIf="admin">
+          <p>User ID: {{ t.user }}</p>
+          <p>Car ID: {{ t.car }}</p>
+          <ion-button (click)="status(t.id!, 'approved')">Approve</ion-button>
+          <ion-button (click)="status(t.id!, 'pending')">Pending</ion-button>
+          <ion-button (click)="status(t.id!, 'rejected')">Reject</ion-button>
+        </ng-container>
         <ion-button color="danger" (click)="deleteTestDrive(t)"
           >Delete</ion-button
         >
