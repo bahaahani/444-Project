@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { NavController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastController } from '@ionic/angular';
 import {
   doc,
@@ -11,8 +9,14 @@ import {
   updateDoc,
   Firestore,
   collection,
-} from 'firebase/firestore';
-import { docData } from '@angular/fire/firestore';
+  docData,
+} from '@angular/fire/firestore';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from '@angular/fire/auth';
 
 export interface user {
   id?: string;
@@ -36,20 +40,15 @@ export interface signupInfo {
   providedIn: 'root',
 })
 export class AuthService {
-  db: Firestore;
-
   constructor(
-    public auth: AngularFireAuth,
-    public afs: AngularFirestore,
+    public auth: Auth,
+    public db: Firestore,
     public navCtrl: NavController,
     public toastCtrl: ToastController
-  ) {
-    this.db = getFirestore();
-  }
+  ) {}
 
   async signin(email: string, password: string) {
-    this.auth
-      .signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(this.auth, email, password)
       .then((res) => {
         const uid = res.user!.uid;
         localStorage.setItem('uid', JSON.stringify(uid));
@@ -73,8 +72,7 @@ export class AuthService {
   }
 
   signup(email: string, pass: string, signupUser: signupInfo) {
-    this.auth
-      .createUserWithEmailAndPassword(email, pass)
+    createUserWithEmailAndPassword(this.auth, email, pass)
       .then((res) => {
         const user = res.user!;
         const newUser = {
@@ -107,8 +105,7 @@ export class AuthService {
       message: 'Reset Password Send Via Email',
       duration: 3000,
     });
-    this.auth
-      .sendPasswordResetEmail(email)
+    sendPasswordResetEmail(this.auth, email)
       .then(() => {
         mess1.present();
       })

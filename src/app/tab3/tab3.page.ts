@@ -1,39 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService, user } from '../auth.service';
 import { ToastController } from '@ionic/angular';
+import { doc, docData } from '@angular/fire/firestore';
+import { CarService } from '../car.service';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
 })
-export class Tab3Page implements OnInit {
-  userid: any;
+export class Tab3Page {
   user: user = {} as user;
-  constructor(public d: AuthService, public t: ToastController) {
-    this.d.auth.authState.subscribe((user) => {
-      if (user) {
-        this.userid = user.uid;
+  constructor(
+    public authSrv: AuthService,
+    public toastCtrl: ToastController,
+    public dataSrv: CarService
+  ) {
+    docData(doc(this.dataSrv.db, 'USERS', this.dataSrv.getUid())).subscribe(
+      (user) => {
+        this.user = user as user;
       }
-      if (this.userid) {
-        this.d.getUser(this.userid).subscribe((user1) => {
-          this.user = user1;
-        });
-      }
-    });
+    );
   }
-  ngOnInit(): void {}
 
   LogOut() {
-    this.d.logOut();
+    this.authSrv.logOut();
   }
   deleteUser() {}
   async Edit() {
-    const toat = await this.t.create({
+    const toat = await this.toastCtrl.create({
       message: 'Infomration has been updated successfully',
       duration: 2000,
     });
     toat.present();
     // alert(this.user.UserName);
-    this.d.updatepro(this.user);
+    this.authSrv.updatepro(this.user);
   }
 }

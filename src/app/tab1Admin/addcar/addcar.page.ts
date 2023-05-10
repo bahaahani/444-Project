@@ -19,7 +19,7 @@ export class AddcarPage implements OnInit {
     public a: AlertController,
     public n: NavParams,
     public mod: ModalController,
-    public d: CarService
+    public dataSrv: CarService
   ) {
     this.showid = n.get('id');
   }
@@ -59,7 +59,7 @@ export class AddcarPage implements OnInit {
     this.car.features = this.Features;
     this.car.showroom = this.showid;
     this.car.sold = false;
-    this.d.addnewcar1(this.car).then(() => {
+    this.dataSrv.addNewCar(this.car).then(() => {
       alt.present();
       this.mod.dismiss();
     });

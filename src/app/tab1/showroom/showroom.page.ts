@@ -3,19 +3,21 @@ import { CarService, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, IonModal } from '@ionic/angular';
 import {
-  collection,
   getCountFromServer,
   getDocs,
-  getFirestore,
   query,
   where,
-} from 'firebase/firestore';
+  collection,
+  setDoc,
+  doc,
+} from '@angular/fire/firestore';
+
 @Component({
   selector: 'app-showroom',
   templateUrl: './showroom.page.html',
   styleUrls: ['./showroom.page.scss'],
 })
-export class ShowroomPage implements OnInit {
+export class ShowroomPage {
   Usr = 'View';
   shoowid: any;
   testDriveDate = new Date();
@@ -37,8 +39,7 @@ export class ShowroomPage implements OnInit {
     const requested_date = new Date(e.detail.value);
 
     // ensure user have less than 3 test drives
-    const fb = getFirestore();
-    const testDriveCollection = collection(fb, 'testDrive');
+    const testDriveCollection = collection(this.dataSrv.db, 'testDrive');
     const filtered_query = query(testDriveCollection, where('user', '==', uid));
     const snapshot = await getCountFromServer(filtered_query);
     const count = snapshot.data().count;
@@ -79,7 +80,7 @@ export class ShowroomPage implements OnInit {
       status: 'pending',
       date: requested_date,
     };
-    this.dataSrv.testDriveCollectionRef.doc().set(testDrive);
+    setDoc(doc(this.dataSrv.testDriveCollection), testDrive);
     const alert = await this.alertCtrl.create({
       header: 'Success',
       message: 'Car booked successfully',
@@ -88,10 +89,6 @@ export class ShowroomPage implements OnInit {
     await alert.present();
   }
 
-  ngOnInit() {
-    // this.carList = this.dataSrv.carList;
-    // const id = this.route.snapshot.paramMap.get('id');
-  }
   searchResults: Cars[] = [];
   search() {
     this.searchResults = this.dataSrv.carList.filter(

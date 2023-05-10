@@ -40,11 +40,7 @@ export class Tab1Page implements OnInit {
     this.showroom$ = this.carService.showroom;
   }
 
-  constructor(
-    public authService: AuthService,
-    public carService: CarService,
-    private navCtrl: NavController
-  ) {}
+  constructor(public authService: AuthService, public carService: CarService) {}
 
   passparameter() {
     const params = {

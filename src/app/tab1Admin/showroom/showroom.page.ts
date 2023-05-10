@@ -39,7 +39,7 @@ export class ShowroomPage implements OnInit {
     // const id = this.route.snapshot.paramMap.get('id');
   }
   deletecar(c: any) {
-    this.dataSrv.deletecar1(c.id);
+    this.dataSrv.deleteCar(c.id);
   }
   async addnewcar() {
     const mod = await this.m.create({
@@ -65,7 +65,7 @@ export class ShowroomPage implements OnInit {
   SoldCar(car: any) {
     car.sold = true;
     alert(car.sold);
-    this.dataSrv.Soldcar1(car);
+    this.dataSrv.sellCar(car);
   }
 
   /* searchResults: Cars[] = [];

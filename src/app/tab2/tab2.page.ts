@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import {
+  collectionData,
+  deleteDoc,
+  doc,
+  query,
+  where,
+} from '@angular/fire/firestore';
 import { CarService, TestDrive } from '../car.service';
 
 @Component({
@@ -7,8 +14,16 @@ import { CarService, TestDrive } from '../car.service';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
+  testDrive = collectionData(
+    query(
+      this.dataSrv.testDriveCollection,
+      where('user', '==', this.dataSrv.getUid())
+    ),
+    { idField: 'id' }
+  );
+
   deleteTestDrive(testDrive: TestDrive) {
-    this.dataSrv.testDriveCollectionRef.doc(testDrive.id).delete();
+    deleteDoc(doc(this.dataSrv.testDriveCollection, testDrive.id));
   }
 
   constructor(public dataSrv: CarService) {}

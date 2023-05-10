@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-tabs2',
@@ -7,5 +6,5 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['tabs2.page.scss'],
 })
 export class TabsPage {
-  constructor(public afAuth: AngularFireAuth) {}
+  constructor() {}
 }
