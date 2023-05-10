@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CarService, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, IonModal } from '@ionic/angular';
@@ -7,9 +7,9 @@ import {
   getDocs,
   query,
   where,
-  collection,
   setDoc,
   doc,
+  Timestamp,
 } from '@angular/fire/firestore';
 
 @Component({
@@ -39,10 +39,11 @@ export class ShowroomPage {
     const requested_date = new Date(e.detail.value);
 
     // ensure user have less than 3 test drives
-    const testDriveCollection = collection(this.dataSrv.db, 'testDrive');
-    const filtered_query = query(testDriveCollection, where('user', '==', uid));
-    const snapshot = await getCountFromServer(filtered_query);
-    const count = snapshot.data().count;
+    const count = (
+      await getCountFromServer(
+        query(this.dataSrv.testDriveCollection, where('user', '==', uid))
+      )
+    ).data().count;
     if (count >= 3) {
       const alert = await this.alertCtrl.create({
         header: 'Error',
@@ -56,7 +57,10 @@ export class ShowroomPage {
     // ensure no time conflict
     const booked_dates: Array<String> = [];
     const date_query = await getDocs(
-      query(testDriveCollection, where('car', '==', this.selected_car.id))
+      query(
+        this.dataSrv.testDriveCollection,
+        where('car', '==', this.selected_car.id)
+      )
     );
     date_query.forEach((doc) =>
       booked_dates.push(doc.data()['date'].toDate().toDateString())
@@ -78,7 +82,7 @@ export class ShowroomPage {
       user: uid,
       carModel: this.selected_car.model,
       status: 'pending',
-      date: requested_date,
+      date: requested_date as any as Timestamp,
     };
     setDoc(doc(this.dataSrv.testDriveCollection), testDrive);
     const alert = await this.alertCtrl.create({

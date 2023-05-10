@@ -11,6 +11,7 @@ import {
   Firestore,
   query,
   setDoc,
+  Timestamp,
   updateDoc,
   where,
 } from '@angular/fire/firestore';
@@ -47,7 +48,7 @@ export interface TestDrive {
   user: string;
   car: string;
   carModel: string;
-  date: Date;
+  date: Timestamp;
   status: 'pending' | 'approved' | 'rejected';
 }
 
