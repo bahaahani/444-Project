@@ -41,7 +41,7 @@ export interface Cars {
   showroom: number;
   specifications: any;
   type: string;
-  sold: boolean;
+  status: 'available' | 'sold' | 'history';
 }
 
 export interface TestDrive {
@@ -94,7 +94,6 @@ export class CarService {
     return JSON.parse(localStorage.getItem('uid')!);
   }
 
-
   async deleteCar(id: string) {
     const alt = await this.alertCtrl.create({
       message: 'Are you sure you want to delete this car?',
@@ -128,7 +127,7 @@ export class CarService {
     alert(car.sold);
 
     updateDoc(doc(this.carCollection, car.id), {
-      sold: car.sold,
+      status: 'sold',
     });
   }
 

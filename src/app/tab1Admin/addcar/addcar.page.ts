@@ -25,7 +25,6 @@ export class AddcarPage {
     this.showid = n.get('id');
   }
 
-
   close() {
     this.mod.dismiss({
       dismissed: true,
@@ -59,7 +58,7 @@ export class AddcarPage {
     this.car.specifications = this.speci;
     this.car.features = this.Features;
     this.car.showroom = this.showid;
-    this.car.sold = false;
+    this.car.status = 'available';
     // add image
     const imageId = String(Math.floor(Math.random() * 100000000));
     this.car.image = `https://firebasestorage.googleapis.com/v0/b/project-444-f1ccb.appspot.com/o/${imageId}?alt=media&token=a29f06ee-4b0c-444b-acb7-8f1612e6ecde`;

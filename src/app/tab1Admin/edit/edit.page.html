@@ -28,6 +28,15 @@
     </ion-item>
 
     <ion-item>
+      <ion-label color="medium">Status: </ion-label>
+      <ion-select [(ngModel)]="car.status">
+        <ion-select-option value="available">Available</ion-select-option>
+        <ion-select-option value="sold">Sold</ion-select-option>
+        <ion-select-option value="history">History</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
       <ion-label color="medium">Color:</ion-label>
       <ion-input type="text" [(ngModel)]="car.color"></ion-input>
     </ion-item>
@@ -48,12 +57,12 @@
         >
       </ion-item>
 
-      <ion-item *ngFor="let x of try;let i=index">
+      <ion-item *ngFor="let x of specification; let i=index">
         <ion-label>{{x}}</ion-label>
         <ion-button color="danger" (click)="remove2(i)">Delete</ion-button>
       </ion-item>
       <ion-item>
-        <ion-label color="medium">Adding:</ion-label>
+        <ion-label color="medium">Specification:</ion-label>
         <!--  <ion-input *ngFor="let x of try2">{{x}}</ion-input>-->
       </ion-item>
       <ion-item>
@@ -108,5 +117,5 @@
   </ion-list>
 
   <ion-button shape="round" expand="block" (click)="edit()">Edit</ion-button>
-  <ion-button shape="round" expand="block" (click)="close()">Cancel</ion-button>
+  <ion-button shape="round" expand="block" (click)="close()">Close</ion-button>
 </ion-content>

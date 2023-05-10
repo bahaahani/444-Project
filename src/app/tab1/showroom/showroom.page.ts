@@ -10,9 +10,12 @@ import {
   setDoc,
   doc,
   Timestamp,
+  collectionData,
+  and,
 } from '@angular/fire/firestore';
 import { AddcarPage } from 'src/app/tab1Admin/addcar/addcar.page';
 import { EditPage } from 'src/app/tab1Admin/edit/edit.page';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-showroom',
@@ -20,6 +23,8 @@ import { EditPage } from 'src/app/tab1Admin/edit/edit.page';
   styleUrls: ['./showroom.page.scss'],
 })
 export class ShowroomPage {
+  cars: Observable<Cars[]>;
+
   admin = this.dataSrv.admin;
   Usr = 'View';
   shoowid: any;
@@ -31,6 +36,29 @@ export class ShowroomPage {
     public modalCtrl: ModalController
   ) {
     this.shoowid = this.route.snapshot.paramMap.get('id');
+
+    if (this.admin) {
+      this.cars = collectionData(
+        query(
+          this.dataSrv.carCollection,
+          where('showroom', '==', Number(this.shoowid))
+        ),
+        { idField: 'id' }
+      );
+    } else {
+      this.cars = collectionData(
+        query(
+          this.dataSrv.carCollection,
+          and(
+            where('showroom', '==', Number(this.shoowid)),
+            where('status', '==', 'available')
+          )
+        ),
+        {
+          idField: 'id',
+        }
+      );
+    }
   }
 
   @ViewChild(IonModal) testDriveDateModal: IonModal = {} as any;
