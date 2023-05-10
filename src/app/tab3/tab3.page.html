@@ -1,19 +1,14 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title> User Profile </ion-title>
-    <ion-button slot="start" fill="clear" color="dark">
-      <ion-icon name="person-circle-outline"></ion-icon
-    ></ion-button>
+    <ion-button slot="end" fill="clear" color="dark" (click)="LogOut()">
+      <ion-icon name="log-in-outline"></ion-icon>
+      Log out</ion-button
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!--
-  [(ngModel)]="this.user.name"
- [(ngModel)]="this.user.email"
- [(ngModel)]="this.user.role"
- [src]="this.user.image"
- -->
   <div style="width: 100%" align="center">
     <div width="50%" style="border-radius: 50%" style="padding-top: 50px">
       <ion-img
@@ -21,7 +16,6 @@
         style="border-radius: 50%; width: 50%; height: 100px"
       ></ion-img>
     </div>
-
     <ion-list class="ion-text-center">
       <ion-item color="light">
         <ion-label>User Name</ion-label>
@@ -58,14 +52,23 @@
         ></ion-input>
       </ion-item>
     </ion-list>
-
-    <div align="center">
-      <ion-button color="light" (click)="LogOut()"
-        >Log Out <ion-icon name="log-in-outline"></ion-icon>
-      </ion-button>
-      <ion-button color="light" (click)="deleteUser()"
-        >Delete Account</ion-button
-      >
-    </div>
   </div>
+  <br />
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Favorite Cars</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let f of favorites | async">
+        <ion-label>{{ f.carModel }}</ion-label>
+        <ion-button
+          slot="end"
+          fill="clear"
+          color="danger"
+          (click)="removeFavorite(f.id!)"
+          ><ion-icon name="trash"></ion-icon
+        ></ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

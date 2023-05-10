@@ -54,8 +54,6 @@
 
   <ion-button expand="block" (click)="search()">Search</ion-button>
 
-
-
   <ion-list>
     <ng-container *ngFor="let car of dataSrv.car|async">
       <ion-item *ngIf="car.showroom==shoowid&&car.sold==false">
@@ -79,7 +77,7 @@
             <ion-button fill="clear" color="primary">
               <ion-icon name="arrow-forward"></ion-icon>
             </ion-button>
-            <ion-button>
+            <ion-button (click)="dataSrv.addToFavorite(car)">
               <ion-icon name="heart"></ion-icon>Favorite
             </ion-button>
             <ion-button (click)="selected_car = car; selectDate()">

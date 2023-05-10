@@ -52,6 +52,13 @@ export interface TestDrive {
   status: 'pending' | 'approved' | 'rejected';
 }
 
+export interface Favorite {
+  id?: string;
+  userid: string;
+  carid: string;
+  carModel: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -68,6 +75,10 @@ export class CarService {
     this.db,
     'testDrive'
   ) as CollectionReference<TestDrive>;
+  favoriteCollection = collection(
+    this.db,
+    'favorite'
+  ) as CollectionReference<Favorite>;
 
   constructor(public alertCtrl: AlertController, public db: Firestore) {}
 
@@ -125,20 +136,11 @@ export class CarService {
     );
   }
 
-  addToFavorites(carId: string) {
-    // const userId = 1; // example user ID
-    // const favorite = { carId, userId };
-    // return this.afs.collection(this.favoritesCollectionName).add(favorite);
-  }
-
-  removeFromFavorites(carId: string) {
-    //   const userId = /* get current user ID */ 1;
-    //   return this.afs
-    //     .collection(this.favoritesCollectionName, (ref) =>
-    //       ref.where('carId', '==', carId).where('userId', '==', userId)
-    //     )
-    //     .get()
-    //     .pipe(switchMap((snapshot) => snapshot.docs[0].ref.delete()))
-    //     .toPromise();
+  addToFavorite(car: Cars) {
+    setDoc(doc(this.favoriteCollection), {
+      userid: this.getUid(),
+      carid: car.id!,
+      carModel: car.model,
+    });
   }
 }

@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthService, user } from '../auth.service';
 import { ToastController } from '@ionic/angular';
-import { doc, docData } from '@angular/fire/firestore';
+import {
+  collectionData,
+  deleteDoc,
+  doc,
+  docData,
+  query,
+  where,
+} from '@angular/fire/firestore';
 import { CarService } from '../car.service';
 
 @Component({
@@ -10,7 +17,15 @@ import { CarService } from '../car.service';
   styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page {
+  favorites = collectionData(
+    query(
+      this.dataSrv.favoriteCollection,
+      where('userid', '==', this.dataSrv.getUid())
+    ),
+    { idField: 'id' }
+  );
   user: user = {} as user;
+
   constructor(
     public authSrv: AuthService,
     public toastCtrl: ToastController,
@@ -21,6 +36,10 @@ export class Tab3Page {
         this.user = user as user;
       }
     );
+  }
+
+  removeFavorite(fid: string) {
+    deleteDoc(doc(this.dataSrv.favoriteCollection, fid));
   }
 
   LogOut() {
