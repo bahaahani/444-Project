@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { CarService, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, IonModal } from '@ionic/angular';
+import { AlertController, IonModal, ModalController } from '@ionic/angular';
 import {
   getCountFromServer,
   getDocs,
@@ -11,6 +11,8 @@ import {
   doc,
   Timestamp,
 } from '@angular/fire/firestore';
+import { AddcarPage } from 'src/app/tab1Admin/addcar/addcar.page';
+import { EditPage } from 'src/app/tab1Admin/edit/edit.page';
 
 @Component({
   selector: 'app-showroom',
@@ -18,13 +20,15 @@ import {
   styleUrls: ['./showroom.page.scss'],
 })
 export class ShowroomPage {
+  admin = this.dataSrv.admin;
   Usr = 'View';
   shoowid: any;
   testDriveDate = new Date();
   constructor(
     public dataSrv: CarService,
     private route: ActivatedRoute,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController
   ) {
     this.shoowid = this.route.snapshot.paramMap.get('id');
   }
@@ -91,6 +95,32 @@ export class ShowroomPage {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  deleteCar(c: any) {
+    this.dataSrv.deleteCar(c.id);
+  }
+
+  async openEdit(car: any) {
+    alert(car.id);
+    const mod = await this.modalCtrl.create({
+      component: EditPage,
+      componentProps: {
+        id: car.id,
+      },
+    });
+    // alert(car.id);
+    return mod.present();
+  }
+
+  async addnewcar() {
+    const modal = await this.modalCtrl.create({
+      component: AddcarPage,
+      componentProps: {
+        id: this.shoowid,
+      },
+    });
+    modal.present();
   }
 
   searchResults: Cars[] = [];

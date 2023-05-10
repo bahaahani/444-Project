@@ -1,10 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>showroom</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>showroom</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addnewcar()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list>
     <ion-item>
       <ion-label>Type</ion-label>
@@ -73,6 +79,14 @@
             </ul>
             <p>Price: {{car.price}}</p>
           </ion-card-content>
+          <ion-buttons *ngIf="admin">
+            <ion-button color="danger" (click)="deleteCar(car)">
+              <ion-icon name="close-circle"></ion-icon>Delete
+            </ion-button>
+            <ion-button color="success" (click)="openEdit(car)">
+              <ion-icon name="pencil"></ion-icon>Edit
+            </ion-button>
+          </ion-buttons>
           <ion-buttons>
             <ion-button fill="clear" color="primary">
               <ion-icon name="arrow-forward"></ion-icon>
@@ -81,7 +95,7 @@
               <ion-icon name="heart"></ion-icon>Favorite
             </ion-button>
             <ion-button (click)="selected_car = car; selectDate()">
-              <ion-icon name="share"></ion-icon>TEST DRIVE
+              <ion-icon name="share"></ion-icon>Test Drive
             </ion-button>
           </ion-buttons>
         </ion-card>
