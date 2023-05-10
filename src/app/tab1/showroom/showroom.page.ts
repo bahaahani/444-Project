@@ -13,8 +13,8 @@ import {
   collectionData,
   and,
 } from '@angular/fire/firestore';
-import { AddcarPage } from 'src/app/tab1Admin/addcar/addcar.page';
-import { EditPage } from 'src/app/tab1Admin/edit/edit.page';
+import { AddcarPage } from 'src/app/addcar/addcar.page';
+import { EditPage } from 'src/app/edit/edit.page';
 import { Observable } from 'rxjs';
 
 @Component({

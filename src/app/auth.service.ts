@@ -57,16 +57,11 @@ export class AuthService {
         const sub = docData(doc(getFirestore(), 'USERS', uid)).subscribe(
           (user) => {
             if (user['admin']) {
-              alert('login in succssfully admin');
               this.dataSrv.admin = true;
               localStorage.setItem('admin', JSON.parse('true'));
-              this.navCtrl.navigateForward('/tabs2/tab1Admin');
-              sub.unsubscribe();
-            } else {
-              alert('login in succssfully user');
-              this.navCtrl.navigateForward('/tabs/tab1');
-              sub.unsubscribe();
             }
+            this.navCtrl.navigateForward('/tabs');
+            sub.unsubscribe();
           }
         );
       })

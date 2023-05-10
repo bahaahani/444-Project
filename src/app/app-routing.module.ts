@@ -18,12 +18,6 @@ const routes: Routes = [
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('./tabsAdmin/tabs2.module').then((m) => m.TabsPageModule),
-  },
-
-  {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
@@ -36,21 +30,12 @@ const routes: Routes = [
   {
     path: 'edit',
     loadChildren: () =>
-      import('./tab1Admin/edit/edit.module').then((m) => m.EditPageModule),
+      import('./edit/edit.module').then((m) => m.EditPageModule),
   },
   {
     path: 'addcar',
     loadChildren: () =>
-      import('./tab1Admin/addcar/addcar.module').then(
-        (m) => m.AddcarPageModule
-      ),
-  },
-  {
-    path: 'add-admin',
-    loadChildren: () =>
-      import('./tab3Admin/add-admin/add-admin.module').then(
-        (m) => m.AddAdminPageModule
-      ),
+      import('./addcar/addcar.module').then((m) => m.AddcarPageModule),
   },
 ];
 @NgModule({
