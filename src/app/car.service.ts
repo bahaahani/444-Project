@@ -15,6 +15,7 @@ import {
   updateDoc,
   where,
 } from '@angular/fire/firestore';
+import { Storage } from '@angular/fire/storage';
 
 export interface ShowRooms {
   id?: string;
@@ -80,7 +81,11 @@ export class CarService {
     'favorite'
   ) as CollectionReference<Favorite>;
 
-  constructor(public alertCtrl: AlertController, public db: Firestore) {}
+  constructor(
+    public alertCtrl: AlertController,
+    public db: Firestore,
+    public storage: Storage
+  ) {}
 
   getUid(): string {
     return JSON.parse(localStorage.getItem('uid')!);
