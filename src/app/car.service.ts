@@ -64,6 +64,7 @@ export interface Favorite {
   providedIn: 'root',
 })
 export class CarService {
+  admin = false;
   carList: any;
   showroomCollection = collection(
     this.db,
@@ -85,11 +86,14 @@ export class CarService {
     public alertCtrl: AlertController,
     public db: Firestore,
     public storage: Storage
-  ) {}
+  ) {
+    this.admin = JSON.parse(localStorage.getItem('admin')!);
+  }
 
   getUid(): string {
     return JSON.parse(localStorage.getItem('uid')!);
   }
+
 
   async deleteCar(id: string) {
     const alt = await this.alertCtrl.create({

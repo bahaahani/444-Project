@@ -17,6 +17,7 @@ import {
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
+import { CarService } from './car.service';
 
 export interface user {
   id?: string;
@@ -44,7 +45,8 @@ export class AuthService {
     public auth: Auth,
     public db: Firestore,
     public navCtrl: NavController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public dataSrv: CarService
   ) {}
 
   async signin(email: string, password: string) {
@@ -56,6 +58,8 @@ export class AuthService {
           (user) => {
             if (user['admin']) {
               alert('login in succssfully admin');
+              this.dataSrv.admin = true;
+              localStorage.setItem('admin', JSON.parse('true'));
               this.navCtrl.navigateForward('/tabs2/tab1Admin');
               sub.unsubscribe();
             } else {
@@ -120,7 +124,9 @@ export class AuthService {
 
   logOut() {
     this.auth.signOut().then(() => {
+      this.dataSrv.admin = false;
       localStorage.removeItem('uid');
+      localStorage.removeItem('admin');
       this.navCtrl.navigateBack('/home');
     });
   }
