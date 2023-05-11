@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="navCtrl.back()" routerDirection="back"
+      ><ion-icon name="arrow-back"></ion-icon
+    ></ion-button>
+    <ion-title>View Car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="{{ car.image }}" />
+    <ion-card-header>
+      <ion-card-title>{{ car.model }}</ion-card-title>
+      <ion-card-subtitle>{{ car.manufacturer }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>Type: {{ car.type }}</ion-item>
+    <ion-item>Color: {{ car.color }}</ion-item>
+    <ion-item>Engine: {{ car.engine }}</ion-item>
+    <ion-item>Features: {{ car.features }}</ion-item>
+    <ion-item>Mileage: {{ car.mileage }}</ion-item>
+    <ion-item>Number of seats: {{ car.numberOfSeats }}</ion-item>
+    <ion-item>Mileage: {{ car.mileage }}</ion-item>
+    <ion-item>Price: {{ car.price }}</ion-item>
+    <ion-item>Specifications: {{ car.specifications }}</ion-item>
+    <ion-item>Status: {{ car.status }}</ion-item>
+  </ion-card>
+</ion-content>

@@ -72,16 +72,11 @@
         <img src="{{car.image}}" alt="" />
         <ion-card-title>{{car.model}}</ion-card-title>
         <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
-        <p>{{car.specifications}}</p>
       </ion-card-header>
       <ion-card-content>
         <h1>Color: {{car.color}}</h1>
         <h1>Mileage: {{car.mileage}}</h1>
-        <h1>Features:</h1>
-        <ul>
-          <li *ngFor="let feature of car.features">{{feature}}</li>
-        </ul>
-        <p>Price: {{car.price}}</p>
+        <h1>Price: {{car.price}}</h1>
       </ion-card-content>
       <ion-buttons *ngIf="admin">
         <ion-button color="danger" (click)="deleteCar(car)">
@@ -92,7 +87,12 @@
         </ion-button>
       </ion-buttons>
       <ion-buttons>
-        <ion-button fill="clear" color="primary">
+        <ion-button
+          fill="clear"
+          color="primary"
+          (click)="dataSrv.selectedCarId = car.id!"
+          [routerLink]="['/viewcar']"
+        >
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
         <ion-button (click)="dataSrv.addToFavorite(car)">

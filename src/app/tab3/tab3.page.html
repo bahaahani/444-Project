@@ -60,7 +60,11 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item *ngFor="let f of favorites | async">
-        <ion-label>{{ f.carModel }}</ion-label>
+        <ion-label
+          (click)="dataSrv.selectedCarId = f.carid"
+          [routerLink]="['/viewcar']"
+          >{{ f.carModel }}</ion-label
+        >
         <ion-button
           slot="end"
           fill="clear"

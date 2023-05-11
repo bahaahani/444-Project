@@ -130,14 +130,12 @@ export class ShowroomPage {
   }
 
   async openEdit(car: any) {
-    alert(car.id);
     const mod = await this.modalCtrl.create({
       component: EditPage,
       componentProps: {
         id: car.id,
       },
     });
-    // alert(car.id);
     return mod.present();
   }
 

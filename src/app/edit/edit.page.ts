@@ -16,10 +16,10 @@ export class EditPage {
   newItem2 = '';
   constructor(
     public dataSrv: CarService,
-    public n: NavParams,
+    public navPrams: NavParams,
     public mod: ModalController
   ) {
-    const x = n.get('id');
+    const x = navPrams.get('id');
     this.dataSrv.getCar(x).subscribe((car) => {
       this.car = car;
       this.features = this.car.features;

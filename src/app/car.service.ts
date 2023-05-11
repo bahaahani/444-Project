@@ -66,6 +66,7 @@ export interface Favorite {
 export class CarService {
   admin = false;
   carList: any;
+  selectedCarId = '';
   showroomCollection = collection(
     this.db,
     'showroom'
