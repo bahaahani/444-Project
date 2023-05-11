@@ -17,6 +17,9 @@ export class filterCarPipe implements PipeTransform {
     if (params.maxPrice) {
       value = value.filter((c) => c.price <= params.maxPrice);
     }
+    if (params.status) {
+      value = value.filter((c) => c.status == params.status);
+    }
     return value;
   }
 }

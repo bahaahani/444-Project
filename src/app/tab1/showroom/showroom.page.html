@@ -19,12 +19,25 @@
 
   <ion-list>
     <ion-item>
-      <ion-label>Type</ion-label>
+      <ion-label>Type: </ion-label>
       <ion-select [(ngModel)]="filterParam.type" (ionChange)="filter()">
         <ion-select-option value="Sedan">Sedan</ion-select-option>
         <ion-select-option value="SUV">SUV</ion-select-option>
         <ion-select-option value="Hatchback">Hatchback</ion-select-option>
         <ion-select-option value="Sports">Sports</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Status: </ion-label>
+      <ion-select
+        *ngIf="admin"
+        [(ngModel)]="filterParam.status"
+        (ionChange)="filter()"
+      >
+        <ion-select-option value="available">Available</ion-select-option>
+        <ion-select-option value="sold">Sold</ion-select-option>
+        <ion-select-option value="history">History</ion-select-option>
       </ion-select>
     </ion-item>
 
