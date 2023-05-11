@@ -8,11 +8,6 @@ const routes: Routes = [
     path: '',
     component: ShowroomPage,
   },
-  {
-    path: 'carview',
-    loadChildren: () =>
-      import('./carview/carview.module').then((m) => m.CarviewPageModule),
-  },
 ];
 
 @NgModule({
