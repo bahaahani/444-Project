@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import {
   addDoc,
   collectionData,
+  deleteDoc,
   doc,
   getDoc,
   query,
@@ -17,6 +18,7 @@ import { Cars, CarService, Comment } from '../car.service';
   styleUrls: ['./viewcar.page.scss'],
 })
 export class ViewcarPage {
+  admin = this.dataSrv.admin;
   car: Cars = {} as any;
   comments: Observable<Comment[]>;
 
@@ -30,7 +32,8 @@ export class ViewcarPage {
       query(
         this.dataSrv.commentCollection,
         where('carId', '==', this.dataSrv.selectedCarId)
-      )
+      ),
+      { idField: 'id' }
     );
   }
 
@@ -44,5 +47,9 @@ export class ViewcarPage {
     });
     this.modal.dismiss();
     this.newComment = {} as Comment;
+  }
+
+  deleteComment(cid: string) {
+    deleteDoc(doc(this.dataSrv.commentCollection, cid));
   }
 }

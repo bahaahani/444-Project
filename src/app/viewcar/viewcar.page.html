@@ -38,6 +38,14 @@
         <ion-card-subtitle>{{ c.rating }} out of 5</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>{{ c.comment }}</ion-card-content>
+      <ion-button
+        *ngIf="admin"
+        fill="clear"
+        color="danger"
+        (click)="deleteComment(c.id!)"
+      >
+        <ion-icon name="close-circle"></ion-icon>Delete
+      </ion-button>
     </ion-card>
   </ion-card>
   <ion-modal trigger="commentModal">
