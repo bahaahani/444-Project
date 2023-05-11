@@ -41,7 +41,7 @@ export class ShowroomPage {
       this.cars = collectionData(
         query(
           this.dataSrv.carCollection,
-          where('showroom', '==', Number(this.shoowid))
+          where('showroom', '==', this.shoowid)
         ),
         { idField: 'id' }
       );
@@ -50,7 +50,7 @@ export class ShowroomPage {
         query(
           this.dataSrv.carCollection,
           and(
-            where('showroom', '==', Number(this.shoowid)),
+            where('showroom', '==', this.shoowid),
             where('status', '==', 'available')
           )
         ),
