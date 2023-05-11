@@ -20,7 +20,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Type</ion-label>
-      <ion-select [(ngModel)]="type">
+      <ion-select [(ngModel)]="filterParam.type" (ionChange)="filter()">
         <ion-select-option value="Sedan">Sedan</ion-select-option>
         <ion-select-option value="SUV">SUV</ion-select-option>
         <ion-select-option value="Hatchback">Hatchback</ion-select-option>
@@ -29,45 +29,37 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Manufacturer</ion-label>
-      <ion-input type="text" [(ngModel)]="manufacturer"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Model</ion-label>
-      <ion-input type="text" [(ngModel)]="model"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Color</ion-label>
-      <ion-input type="text" [(ngModel)]="color"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Mileage</ion-label>
-      <ion-input type="number" [(ngModel)]="mileage"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Engine Specifications</ion-label>
-      <ion-input type="text" [(ngModel)]="engineSpecs"></ion-input>
+      <ion-label>Max Mileage: </ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="filterParam.maxMileage"
+        (ionChange)="filter()"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Number of Seats</ion-label>
-      <ion-input type="number" [(ngModel)]="numSeats"></ion-input>
+      <ion-input
+        type="number"
+        [(ngModel)]="filterParam.numberOfSeats"
+        (ionChange)="filter()"
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Price</ion-label>
-      <ion-input type="number" [(ngModel)]="price"></ion-input>
+      <ion-label>Max Price: </ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="filterParam.maxPrice"
+        (ionChange)="filter()"
+      ></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" (click)="search()">Search</ion-button>
+  <ion-button expand="block" (click)="filterParam = {}">Reset</ion-button>
 
-  <ion-list>
-    <ion-card *ngFor="let car of cars | async">
+  <ion-list *ngIf="filterParam != null && filterParam == filterParam">
+    <ion-card *ngFor="let car of cars | async | filterCar : filterParam">
       <ion-card-header>
         <img src="{{car.image}}" alt="" />
         <ion-card-title>{{car.model}}</ion-card-title>
