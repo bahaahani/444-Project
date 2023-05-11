@@ -60,6 +60,14 @@ export interface Favorite {
   carModel: string;
 }
 
+export interface Comment {
+  id?: string;
+  carId: string;
+  username: string;
+  rating: string;
+  comment: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -82,6 +90,10 @@ export class CarService {
     this.db,
     'favorite'
   ) as CollectionReference<Favorite>;
+  commentCollection = collection(
+    this.db,
+    'comment'
+  ) as CollectionReference<Comment>;
 
   constructor(
     public alertCtrl: AlertController,
@@ -93,6 +105,10 @@ export class CarService {
 
   getUid(): string {
     return JSON.parse(localStorage.getItem('uid')!);
+  }
+
+  getUsername(): string {
+    return JSON.parse(localStorage.getItem('username')!);
   }
 
   async deleteCar(id: string) {

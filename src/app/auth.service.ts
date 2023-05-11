@@ -58,8 +58,9 @@ export class AuthService {
           (user) => {
             if (user['admin']) {
               this.dataSrv.admin = true;
-              localStorage.setItem('admin', JSON.parse('true'));
+              localStorage.setItem('admin', JSON.stringify('true'));
             }
+            localStorage.setItem('username', JSON.stringify(user['UserName']));
             this.navCtrl.navigateForward('/tabs');
             sub.unsubscribe();
           }
@@ -97,6 +98,7 @@ export class AuthService {
       Email: user.Email,
       phone: user.phone,
     });
+    localStorage.setItem('username', JSON.stringify(user.UserName));
   }
 
   async send(email: string) {
