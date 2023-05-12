@@ -45,7 +45,7 @@ export class Tab3Page {
   LogOut() {
     this.authSrv.logOut();
   }
-  deleteUser() {}
+  deleteUser() { }
   async Edit() {
     const toat = await this.toastCtrl.create({
       message: 'Infomration has been updated successfully',
