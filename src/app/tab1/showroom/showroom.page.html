@@ -28,10 +28,9 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="admin">
       <ion-label>Status: </ion-label>
       <ion-select
-        *ngIf="admin"
         [(ngModel)]="filterParam.status"
         (ionChange)="filter()"
       >
