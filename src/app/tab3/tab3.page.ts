@@ -38,14 +38,21 @@ export class Tab3Page {
     );
   }
 
-  removeFavorite(fid: string) {
-    deleteDoc(doc(this.dataSrv.favoriteCollection, fid));
+  async removeFavorite(fid: string) {
+    const toast = await this.toastCtrl.create({
+      message: 'Car removed from favorite',
+      duration: 1500,
+      position: 'bottom',
+    });
+    deleteDoc(doc(this.dataSrv.favoriteCollection, fid)).then(() => {
+      toast.present();
+    });
   }
 
   LogOut() {
     this.authSrv.logOut();
   }
-  deleteUser() { }
+
   async Edit() {
     const toat = await this.toastCtrl.create({
       message: 'Infomration has been updated successfully',
