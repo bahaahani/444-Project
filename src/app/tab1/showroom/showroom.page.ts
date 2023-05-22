@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CarService, Cars, TestDrive } from '../../car.service';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, IonModal, ModalController } from '@ionic/angular';
@@ -16,6 +16,9 @@ import {
 import { AddcarPage } from 'src/app/addcar/addcar.page';
 import { EditPage } from 'src/app/edit/edit.page';
 import { Observable } from 'rxjs';
+import { get } from 'http';
+import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
+declare var dynamics: any;
 
 @Component({
   selector: 'app-showroom',
@@ -29,6 +32,20 @@ export class ShowroomPage {
   shoowid: any;
   testDriveDate = new Date();
   filterParam: any = {};
+  
+  
+  animatebutton(){
+    
+    var elem = document.getElementsByClassName("animatebutton")
+    dynamics.animate(elem, {
+      translateX: 350,
+    }, {
+      type: dynamics.spring,
+      duration: 1000,
+      friction: 400,
+      complete: this.animatebutton
+    });
+  }
 
   filter() {
     this.filterParam = JSON.parse(JSON.stringify(this.filterParam));

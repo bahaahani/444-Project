@@ -10,6 +10,7 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { CarService } from '../car.service';
+declare var dynamics: any;
 
 @Component({
   selector: 'app-tab3',
@@ -52,7 +53,23 @@ export class Tab3Page {
   LogOut() {
     this.authSrv.logOut();
   }
-
+  shakeImage() {
+    const element = document.getElementById('myImage');
+    dynamics.animate(
+      element,
+      {
+        translateX: ['-10px', '10px'],
+        rotateZ: ['-5deg', '5deg'],
+      },
+      {
+        type: dynamics.spring,
+        frequency: 10,
+        friction: 200,
+        duration: 1500,
+      }
+    );
+  }
+  
   async Edit() {
     const toat = await this.toastCtrl.create({
       message: 'Infomration has been updated successfully',
