@@ -2,8 +2,8 @@
   <ion-header>
     <ion-toolbar color="medium">
       <ion-title align="center">Log In</ion-title>
-      <ion-button fill="clear" routerLink="/home" slot="start" color="dark"
-        ><ion-icon name="home"></ion-icon>
+      <ion-button fill="clear" routerLink="/home" slot="start" color="dark">
+        <ion-icon name="home"></ion-icon>
       </ion-button>
     </ion-toolbar>
   </ion-header>
@@ -11,24 +11,33 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <ion-item>
-            <ion-icon name="mail" slot="start"></ion-icon>
-            <ion-label position="floating">Email</ion-label>
+          <ion-item lines="none">
+            <ion-label position="stacked">Email</ion-label>
             <ion-input type="text" [(ngModel)]="email"></ion-input>
+            <ion-icon name="mail" slot="start" class="input-icon"></ion-icon>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-item>
-            <ion-icon name="lock-closed" slot="start"></ion-icon>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
-          </ion-item>
           <ion-item lines="none">
-            <ion-button (click)="send()" fill="clear" color="medium" slot="end">
-              Forget Password?</ion-button
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+            <ion-icon
+              name="lock-closed"
+              slot="start"
+              class="input-icon"
+            ></ion-icon>
+          </ion-item>
+          <ion-item lines="none" class="forget-password">
+            <ion-button
+              (click)="send()"
+              fill="clear"
+              color="medium"
+              slot="end"
             >
+              Forgot Password?
+            </ion-button>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -39,8 +48,10 @@
             expand="block"
             color="primary"
             shape="round"
-            >Sign In</ion-button
+            class="sign-in-button"
           >
+            Sign In
+          </ion-button>
           <p style="color: black">
             Don't have an account? <a routerLink="/signup">Sign up here</a>
           </p>
