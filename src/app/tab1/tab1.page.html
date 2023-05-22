@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title> View Showroom </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center"> View Showroom </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -34,8 +34,8 @@
   </ion-slides>
 
 
-  <ion-item class="ion-text-center">
-    <h1>Showrooms Nearby You</h1>
+  <ion-item >
+    <h1 class="bold-text ion-text-center">Showrooms Nearby You</h1>
   </ion-item>
 
   <ion-card *ngFor="let showroom of carService.showroom|async" class="ion-text-center">
@@ -75,7 +75,7 @@
       </ion-label>
     </ion-list-header>
     <ion-item lines="none" *ngFor="let showroom of carService.showroom|async">
-      <ion-thumbnail slot="start">
+      <ion-thumbnail slot="start" class="large-thumbnail">
         <img src="{{showroom.image}}" />
       </ion-thumbnail>
       <ion-label>

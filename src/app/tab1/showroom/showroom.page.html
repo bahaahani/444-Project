@@ -1,12 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-button
-      fill="clear"
-      [routerLink]="['/tabs/tab1']"
-      routerDirection="back"
-      ><ion-icon name="arrow-back"></ion-icon
-    ></ion-button>
-    <ion-title>Cars</ion-title>
+  <ion-toolbar color="primary">
+    <ion-button slot="start"
+    [routerLink]="['/tabs/tab1']"
+    routerDirection="back"
+    ><ion-icon name="arrow-back"></ion-icon
+      ></ion-button>
+      <ion-title class="ion-text-center">Cars</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -69,15 +68,15 @@
 
   <ion-list *ngIf="filterParam != null && filterParam == filterParam">
     <ion-card *ngFor="let car of cars | async | filterCar : filterParam">
-      <ion-card-header>
+      <ion-card-header class="ion-padding">
         <img src="{{car.image}}" alt="" />
-        <ion-card-title>{{car.model}}</ion-card-title>
-        <ion-card-subtitle>{{car.type}}</ion-card-subtitle>
+        <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
+        <ion-card-subtitle class="ion-no-padding">{{car.type}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <h1>Color: {{car.color}}</h1>
-        <h1>Mileage: {{car.mileage}}</h1>
-        <h1>Price: {{car.price}}</h1>
+        <ion-card-subtitle class="ion-text-center">Color: {{car.color}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Mileage: {{car.mileage}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-text-center">Price: {{car.price}}</ion-card-subtitle>
       </ion-card-content>
       <ion-buttons *ngIf="admin">
         <ion-button color="danger" (click)="deleteCar(car)">
@@ -87,7 +86,7 @@
           <ion-icon name="pencil"></ion-icon>Edit
         </ion-button>
       </ion-buttons>
-      <ion-buttons>
+      <ion-buttons style="display:flex;justify-content:center">
         <ion-button
           fill="clear"
           color="primary"
