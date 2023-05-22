@@ -17,16 +17,16 @@ export class AddcarPage {
   newItem = '';
   newItem2 = '';
   constructor(
-    public a: AlertController,
-    public n: NavParams,
-    public mod: ModalController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
     public dataSrv: CarService
   ) {
-    this.showid = n.get('id');
+    this.showid = navParams.get('id');
   }
 
   close() {
-    this.mod.dismiss({
+    this.modalCtrl.dismiss({
       dismissed: true,
     });
   }
@@ -35,8 +35,6 @@ export class AddcarPage {
     if (this.newItem !== '') {
       this.speci.push(this.newItem);
       this.newItem = '';
-    } else {
-      alert('Can not add empty item');
     }
   }
 
@@ -44,14 +42,12 @@ export class AddcarPage {
     if (this.newItem2 !== '') {
       this.Features.push(this.newItem2);
       this.newItem2 = '';
-    } else {
-      alert('Can not add empty item');
     }
   }
 
   @ViewChild('in') imageInput: ElementRef = {} as ElementRef;
   async addnewcar() {
-    const alt = await this.a.create({
+    const alt = await this.alertCtrl.create({
       message: 'New Car Added Successfully',
       buttons: ['OK'],
     });
@@ -74,7 +70,7 @@ export class AddcarPage {
 
     this.dataSrv.addNewCar(this.car).then(() => {
       alt.present();
-      this.mod.dismiss();
+      this.modalCtrl.dismiss();
     });
   }
 }

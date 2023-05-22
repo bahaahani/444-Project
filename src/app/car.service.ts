@@ -139,15 +139,6 @@ export class CarService {
     return docData(doc(this.carCollection, id), { idField: 'id' });
   }
 
-  sellCar(car: any) {
-    alert(car.id);
-    alert(car.sold);
-
-    updateDoc(doc(this.carCollection, car.id), {
-      status: 'sold',
-    });
-  }
-
   updateCarInfo(car: any) {
     let newInfo = JSON.parse(JSON.stringify(car));
     delete newInfo.id;

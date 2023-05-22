@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AuthService, signupInfo } from '../auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -8,8 +8,7 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
-export class SignupPage implements OnInit {
-  // private USR: Observable<users[]>;
+export class SignupPage {
   public signupUser: signupInfo = {} as signupInfo;
 
   LoginForm: FormGroup;
@@ -30,14 +29,7 @@ export class SignupPage implements OnInit {
         ]),
       ],
 
-      Email: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.email,
-          //pattern('[a-zA-Z0-9._%+-]*+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/')
-        ]),
-      ],
+      Email: ['', Validators.compose([Validators.required, Validators.email])],
       Phone: [
         '',
         Validators.compose([
@@ -45,7 +37,6 @@ export class SignupPage implements OnInit {
           Validators.minLength(8),
           Validators.maxLength(30),
           Validators.pattern('[0-9]*'),
-          //pattern('[a-zA-Z0-9._%+-]*+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/')
         ]),
       ],
 
@@ -62,7 +53,6 @@ export class SignupPage implements OnInit {
       cpass: ['', [Validators.required]],
     });
   }
-  ngOnInit() {}
 
   async signup() {
     const mess = await this.t.create({

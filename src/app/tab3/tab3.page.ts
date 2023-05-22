@@ -59,7 +59,6 @@ export class Tab3Page {
       duration: 2000,
     });
     toat.present();
-    // alert(this.user.UserName);
     this.authSrv.updatepro(this.user);
   }
 }
