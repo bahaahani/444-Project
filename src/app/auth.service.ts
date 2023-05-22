@@ -66,8 +66,8 @@ export class AuthService {
           }
         );
       })
-      .catch((err) => {
-        alert(err);
+      .catch(() => {
+        alert('email or password is invalid');
       });
   }
 
@@ -83,7 +83,6 @@ export class AuthService {
         };
         setDoc(doc(this.db, 'USERS', user.uid), newUser);
         localStorage.setItem('uid', JSON.stringify(user.uid));
-        alert('Account Successfully Created');
         this.navCtrl.navigateForward('/tabs/tab1');
       })
       .catch(() => {

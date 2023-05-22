@@ -8,15 +8,15 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  constructor(public authSrv: AuthService, public t: ToastController) {}
+  constructor(public authSrv: AuthService, public toastCtrl: ToastController) {}
   email = '';
   password = '';
   async login() {
-    const mess1 = await this.t.create({
+    const mess1 = await this.toastCtrl.create({
       message: 'Enter Your Email Please!',
       duration: 3000,
     });
-    const mess2 = await this.t.create({
+    const mess2 = await this.toastCtrl.create({
       message: 'Enter Your Password Please!',
       duration: 3000,
     });

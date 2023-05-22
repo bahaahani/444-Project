@@ -30,9 +30,5 @@ export class Tab1Page {
 
   showroom$!: Observable<ShowRooms[]>;
 
-  onSlideDidChange(event: CustomEvent<any>) {
-    console.log(event.detail);
-  }
-
   constructor(public authService: AuthService, public carService: CarService) {}
 }

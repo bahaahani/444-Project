@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import {
   collection,
   collectionData,
@@ -98,7 +98,8 @@ export class CarService {
   constructor(
     public alertCtrl: AlertController,
     public db: Firestore,
-    public storage: Storage
+    public storage: Storage,
+    public toastCtrl: ToastController
   ) {
     this.admin = JSON.parse(localStorage.getItem('admin')!);
   }
@@ -127,7 +128,6 @@ export class CarService {
         },
       ],
     });
-    //  alert(id);
     alt.present();
   }
 
@@ -137,15 +137,6 @@ export class CarService {
 
   getCar(id: string): Observable<Cars> {
     return docData(doc(this.carCollection, id), { idField: 'id' });
-  }
-
-  sellCar(car: any) {
-    alert(car.id);
-    alert(car.sold);
-
-    updateDoc(doc(this.carCollection, car.id), {
-      status: 'sold',
-    });
   }
 
   updateCarInfo(car: any) {
@@ -161,11 +152,18 @@ export class CarService {
     );
   }
 
-  addToFavorite(car: Cars) {
+  async addToFavorite(car: Cars) {
+    const toast = await this.toastCtrl.create({
+      message: 'Car added to favorite',
+      duration: 1500,
+      position: 'bottom',
+    });
     setDoc(doc(this.favoriteCollection), {
       userid: this.getUid(),
       carid: car.id!,
       carModel: car.model,
+    }).then(() => {
+      toast.present();
     });
   }
 }

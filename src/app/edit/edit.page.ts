@@ -17,7 +17,7 @@ export class EditPage {
   constructor(
     public dataSrv: CarService,
     public navPrams: NavParams,
-    public mod: ModalController
+    public modalCtrl: ModalController
   ) {
     const x = navPrams.get('id');
     this.dataSrv.getCar(x).subscribe((car) => {
@@ -28,16 +28,15 @@ export class EditPage {
   }
 
   close() {
-    this.mod.dismiss({
+    this.modalCtrl.dismiss({
       dismissed: true,
     });
   }
+
   morespe() {
     if (this.newItem !== '') {
       this.specification.push(this.newItem);
       this.newItem = '';
-    } else {
-      alert('Can not add empty item');
     }
   }
 
@@ -45,8 +44,6 @@ export class EditPage {
     if (this.newItem2 !== '') {
       this.features.push(this.newItem2);
       this.newItem2 = '';
-    } else {
-      alert('Can not add empty item');
     }
   }
 
