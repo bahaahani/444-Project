@@ -34,6 +34,10 @@ ion-content {
 body {
   background-color: #f2f2f2;
 }
+.image-without-background {
+  background-color: transparent;
+}
+
 ion-header {
   ion-icon {
     font-size: 1rem;
