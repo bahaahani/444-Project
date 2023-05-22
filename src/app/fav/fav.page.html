@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Favourites 
+        <ion-icon name="heart" color="danger"></ion-icon>
+    </ion-title>
+    <ion-button fill="clear" (click)="navCtrl.back()" routerDirection="back" slot="start" color="light"
+    ><ion-icon name="arrow-back"></ion-icon
+  ></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="background-color: azure;border:2px solid blue" *ngFor="let f of favorites | async">
+   <!-- <ion-card-header>
+      <ion-card-title>Favorite Cars</ion-card-title>
+    </ion-card-header>-->
+    <ion-card-content>
+      <ion-item >
+        <ion-label class="ion-text-center" (click)="dataSrv.selectedCarId = f.carid" [routerLink]="['/viewcar']"><h2 style="font-weight: bold;">Car Model</h2>{{
+          f.carModel }}</ion-label>
+        <ion-button slot="end" fill="clear" color="danger" (click)="removeFavorite(f.id!)"><ion-icon
+            name="trash"></ion-icon></ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  
+
+
+</ion-content>

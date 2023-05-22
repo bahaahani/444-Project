@@ -11,7 +11,7 @@
         (click)="dataSrv.selectedCarId = t.car"
         [routerLink]="['/viewcar']"
       >
-        <ion-card-subtitle>{{ t.status }}</ion-card-subtitle>
+        <ion-card-subtitle style="font-weight: bold;">{{ t.status }}</ion-card-subtitle>
         <ion-card-title>{{ t.carModel }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -24,10 +24,10 @@
           <ion-button (click)="status(t.id!, 'pending')">Pending</ion-button>
           <ion-button (click)="status(t.id!, 'rejected')">Reject</ion-button>
         </ng-container>
-        <ion-button color="danger" (click)="deleteTestDrive(t)"
+       <ion-button color="danger" (click)="deleteTestDrive(t)"
           >Delete</ion-button
         >
-      </ion-card-content>
+      </ion-card-content> 
     </ion-card>
   </ion-list>
 </ion-content>

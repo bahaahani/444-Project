@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService, user } from '../auth.service';
 import { ToastController } from '@ionic/angular';
 import {
@@ -10,13 +10,14 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { CarService } from '../car.service';
-
+import { NavController } from '@ionic/angular';
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
+  selector: 'app-fav',
+  templateUrl: './fav.page.html',
+  styleUrls: ['./fav.page.scss'],
 })
-export class Tab3Page {
+export class FavPage implements OnInit {
+
   favorites = collectionData(
     query(
       this.dataSrv.favoriteCollection,
@@ -29,7 +30,8 @@ export class Tab3Page {
   constructor(
     public authSrv: AuthService,
     public toastCtrl: ToastController,
-    public dataSrv: CarService
+    public dataSrv: CarService,
+    public navCtrl: NavController
   ) {
     docData(doc(this.dataSrv.db, 'USERS', this.dataSrv.getUid())).subscribe(
       (user) => {
@@ -38,7 +40,10 @@ export class Tab3Page {
     );
   }
 
-  /*async removeFavorite(fid: string) {
+  ngOnInit() {
+  }
+
+  async removeFavorite(fid: string) {
     const toast = await this.toastCtrl.create({
       message: 'Car removed from favorite',
       duration: 1500,
@@ -47,18 +52,6 @@ export class Tab3Page {
     deleteDoc(doc(this.dataSrv.favoriteCollection, fid)).then(() => {
       toast.present();
     });
-  }*/
-
-  LogOut() {
-    this.authSrv.logOut();
   }
 
-  async Edit() {
-    const toat = await this.toastCtrl.create({
-      message: 'Infomration has been updated successfully',
-      duration: 2000,
-    });
-    toat.present();
-    this.authSrv.updatepro(this.user);
-  }
 }
