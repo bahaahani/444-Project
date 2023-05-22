@@ -19,6 +19,7 @@
     </ion-fab-button>
   </ion-fab>
 
+
   <ion-list>
     <ion-item>
       <ion-label>Type: </ion-label>
@@ -71,9 +72,9 @@
 
   <ion-list *ngIf="filterParam != null && filterParam == filterParam">
     <ion-card *ngFor="let car of cars | async | filterCar : filterParam">
-      <ion-card-header class="ion-padding" style="font-weight:bold;">
+      <ion-card-header class="ion-padding">
         <img style="width: 100%;" src="{{car.image}}" alt="" />
-        <ion-card-title class="ion-no-padding" style="font-style: italic;">{{car.model}}</ion-card-title>
+        <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
         <ion-card-subtitle class="ion-no-padding">{{car.type}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
@@ -82,15 +83,14 @@
         <ion-card-subtitle style="font-weight: bold;" >Price: {{car.price}}</ion-card-subtitle>
       </ion-card-content>
       <ion-buttons *ngIf="admin">
-        <ion-button color="danger" (click)="deleteCar(car)">
+        <ion-button color="danger"  (click)="deleteCar(car)">
           <ion-icon name="close-circle"></ion-icon>Delete
         </ion-button>
         <ion-button color="success" (click)="openEdit(car)">
           <ion-icon name="pencil"></ion-icon>Edit
         </ion-button>
       </ion-buttons>
-      <!--style="display:flex;justify-content:center"-->
-      <ion-buttons >
+      <ion-buttons style="display:flex;justify-content:center">
         <ion-button
           fill="clear"
           color="primary"
@@ -100,10 +100,10 @@
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
         <ion-button (click)="dataSrv.addToFavorite(car)">
-          <ion-icon name="heart" color="danger"></ion-icon>Favorite
+          <ion-icon name="heart"></ion-icon>Favorite
         </ion-button>
         <ion-button (click)="selected_car = car; selectDate()">
-          <ion-icon name="share" color="primary"></ion-icon>Test Drive
+          <ion-icon name="share"></ion-icon>Test Drive
         </ion-button>
       </ion-buttons>
     </ion-card>
