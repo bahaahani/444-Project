@@ -33,17 +33,4 @@
     </ion-list>
   </div>
   <br />
-  <!--<ion-card>
-    <ion-card-header>
-      <ion-card-title>Favorite Cars</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item *ngFor="let f of favorites | async">
-        <ion-label class="ion-text-center" (click)="dataSrv.selectedCarId = f.carid" [routerLink]="['/viewcar']">{{
-          f.carModel }}</ion-label>
-        <ion-button slot="end" fill="clear" color="danger" (click)="removeFavorite(f.id!)"><ion-icon
-            name="trash"></ion-icon></ion-button>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
 </ion-content>

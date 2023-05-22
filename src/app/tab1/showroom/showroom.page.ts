@@ -13,13 +13,12 @@ import {
   collectionData,
   and,
 } from '@angular/fire/firestore';
+
+declare var dynamics: any;
+
 import { AddcarPage } from 'src/app/addcar/addcar.page';
 import { EditPage } from 'src/app/edit/edit.page';
 import { Observable } from 'rxjs';
-import { get } from 'http';
-import { getElement } from 'ionicons/dist/types/stencil-public-runtime';
-declare var dynamics: any;
-
 @Component({
   selector: 'app-showroom',
   templateUrl: './showroom.page.html',
@@ -32,7 +31,7 @@ export class ShowroomPage {
   shoowid: any;
   testDriveDate = new Date();
   filterParam: any = {};
-  
+ 
   
   animatebutton(){
     
@@ -40,13 +39,29 @@ export class ShowroomPage {
     dynamics.animate(elem, {
       translateX: 350,
     }, {
-      type: dynamics.spring,
-      duration: 1000,
-      friction: 400,
+      type: dynamics.bounce,
+      duration: 3000,
+      friction: 200,
       complete: this.animatebutton
     });
   }
 
+  shakeImage() {
+    const element = document.getElementsByClassName('myImage');
+    dynamics.animate(
+      element,
+      {
+        translateX: ['-10px', '10px'],
+        rotateZ: ['-5deg', '5deg'],
+      },
+      {
+        type: dynamics.forceWithGravity,
+        frequency: 10,
+        friction: 200,
+        duration: 1500,
+      }
+    );
+  }
   filter() {
     this.filterParam = JSON.parse(JSON.stringify(this.filterParam));
   }

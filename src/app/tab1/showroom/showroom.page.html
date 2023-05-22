@@ -73,14 +73,14 @@
   <ion-list *ngIf="filterParam != null && filterParam == filterParam">
     <ion-card *ngFor="let car of cars | async | filterCar : filterParam">
       <ion-card-header class="ion-padding">
-        <img style="width: 100%;" src="{{car.image}}" alt="" />
+        <img class="animatebutton" style="width: 100%;" src="{{car.image}}" alt="" />
         <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
         <ion-card-subtitle class="ion-no-padding">{{car.type}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-card-subtitle style="font-weight: bold;">Color: {{car.color}}</ion-card-subtitle>
-        <ion-card-subtitle style="font-weight: bold;">Mileage: {{car.mileage}}</ion-card-subtitle>
-        <ion-card-subtitle style="font-weight: bold;" >Price: {{car.price}}</ion-card-subtitle>
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold;">Color: {{car.color}}</ion-card-subtitle>
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold;">Mileage: {{car.mileage}}</ion-card-subtitle>
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold;" >Price: {{car.price}}</ion-card-subtitle>
       </ion-card-content>
       <ion-buttons *ngIf="admin">
         <ion-button color="danger"  (click)="deleteCar(car)">
@@ -99,7 +99,7 @@
         >
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
-        <ion-button (click)="dataSrv.addToFavorite(car)">
+        <ion-button class="animatebutton" (click)="animatebutton()" (click)="dataSrv.addToFavorite(car)">
           <ion-icon name="heart"></ion-icon>Favorite
         </ion-button>
         <ion-button (click)="selected_car = car; selectDate()">
