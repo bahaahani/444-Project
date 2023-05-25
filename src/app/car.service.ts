@@ -58,6 +58,7 @@ export interface Favorite {
   userid: string;
   carid: string;
   carModel: string;
+  image: string;
 }
 
 export interface Comment {
@@ -162,6 +163,7 @@ export class CarService {
       userid: this.getUid(),
       carid: car.id!,
       carModel: car.model,
+      image: car.image,
     }).then(() => {
       toast.present();
     });
