@@ -33,21 +33,44 @@ export class ShowroomPage {
   filterParam: any = {};
  
   
-  animatebutton(){
-    
-    var elem = document.getElementsByClassName("animatebutton")
-    dynamics.animate(elem, {
-      translateX: 350,
+  animatebutton(ref:any){
+    //animatebutton
+    //const b=i.toString();
+    //var elem = document.getElementById(b);
+    dynamics.animate(ref.el, {
+     // translateX: 350,
+     scaleX:0.9
     }, {
       type: dynamics.bounce,
-      duration: 3000,
-      friction: 200,
-      complete: this.animatebutton
+      duration: 1000,
+      bounciness:0,
+
+      //friction: 200,
+      complete:()=>{
+      if(ref.el!=null)
+      ref.el.style.color='red';
+    }
     });
+  /*  const element = document.getElementById(b);
+
+    dynamics.animate(
+      element,
+      {
+        translateX: ['-10px', '10px'],
+        rotateZ: ['-5deg', '5deg'],
+      },
+      {
+        type: dynamics.forceWithGravity,
+        frequency: 10,
+        friction: 200,
+        duration: 1500,
+      }
+    );*/
   }
 
-  shakeImage() {
-    const element = document.getElementsByClassName('myImage');
+ /* shakeImage() {
+    const b=i.toString();
+    const element = document.getElementById(b);
     dynamics.animate(
       element,
       {
@@ -61,7 +84,7 @@ export class ShowroomPage {
         duration: 1500,
       }
     );
-  }
+  }*/
   filter() {
     this.filterParam = JSON.parse(JSON.stringify(this.filterParam));
   }

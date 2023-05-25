@@ -27,7 +27,9 @@
 ion-content {
   --ion-background-color: medium;
   --ion-text-color: light;
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #0217f4;
+  //  --ion-color-primary: #3880ff;
+
   --ion-font-family: 'Helveticas', sans-serif;
   --ion-font-weight: 600;
 }
@@ -47,7 +49,8 @@ ion-header {
   }
 }
 ion-card{
-  --background: #ffffff;
+ 
+ --background: #ffffff;
 }
 
 .bold-text {

@@ -71,9 +71,9 @@
   <ion-button expand="block" (click)="filterParam = {}">Reset</ion-button>
 
   <ion-list *ngIf="filterParam != null && filterParam == filterParam">
-    <ion-card *ngFor="let car of cars | async | filterCar : filterParam">
+    <ion-card *ngFor="let car of cars | async | filterCar : filterParam;let i=index">
       <ion-card-header class="ion-padding">
-        <img class="animatebutton" style="width: 100%;" src="{{car.image}}" alt="" />
+        <img  style="width: 100%;" src="{{car.image}}" alt="" />
         <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
         <ion-card-subtitle class="ion-no-padding">{{car.type}}</ion-card-subtitle>
       </ion-card-header>
@@ -90,7 +90,8 @@
           <ion-icon name="pencil"></ion-icon>Edit
         </ion-button>
       </ion-buttons>
-      <ion-buttons style="display:flex;justify-content:center">
+      <!--style="display:flex;justify-content:center"-->
+      <ion-buttons >
         <ion-button
           fill="clear"
           color="primary"
@@ -99,7 +100,7 @@
         >
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
-        <ion-button class="animatebutton" (click)="animatebutton()" (click)="dataSrv.addToFavorite(car)">
+        <ion-button class="animatebutton" (click)="animatebutton(ref)" (click)="dataSrv.addToFavorite(car)" #ref>
           <ion-icon name="heart"></ion-icon>Favorite
         </ion-button>
         <ion-button (click)="selected_car = car; selectDate()">
@@ -108,6 +109,7 @@
       </ion-buttons>
     </ion-card>
   </ion-list>
+  
 
   <ion-modal [cssClass]="'bottom-end'">
     <ng-template>

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CarService, ShowRooms } from '../car.service';
 import { Observable } from 'rxjs';
+import { NavController } from '@ionic/angular';
+declare var dynamics: any;
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -30,5 +33,20 @@ export class Tab1Page {
 
   showroom$!: Observable<ShowRooms[]>;
 
-  constructor(public authService: AuthService, public carService: CarService) {}
+  constructor(public authService: AuthService, public carService: CarService,public nav:NavController) {}
+
+  animation(){
+    const svg=document.getElementById('fav');
+    dynamics.animate(svg,{
+      scaleY:0.8
+    },
+    {
+      type:dynamics.bounce,
+      duration:800,
+      bounciness:0,
+      complete:()=>{ this.nav.navigateForward('/fav');}
+    })
+   
+  }
+
 }
