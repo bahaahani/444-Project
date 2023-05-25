@@ -11,7 +11,7 @@ import {
 import { IonModal, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Cars, CarService, Comment } from '../car.service';
-declare var dynamics: any;
+
 @Component({
   selector: 'app-viewcar',
   templateUrl: './viewcar.page.html',
@@ -21,18 +21,6 @@ export class ViewcarPage {
   admin = this.dataSrv.admin;
   car: Cars = {} as any;
   comments: Observable<Comment[]>;
-  shake(){
-    
-    var elem = document.getElementsByClassName("myImage")
-    dynamics.animate(elem, {
-      translateX: 350,
-    }, {
-      type: dynamics.forceWithGravity,
-      duration: 3000,
-      friction: 200,
-      complete: this.shake
-    });
-  }
   constructor(public dataSrv: CarService, public navCtrl: NavController) {
     getDoc(doc(this.dataSrv.carCollection, this.dataSrv.selectedCarId)).then(
       (res) => {

@@ -33,20 +33,27 @@ export class Tab1Page {
 
   showroom$!: Observable<ShowRooms[]>;
 
-  constructor(public authService: AuthService, public carService: CarService,public nav:NavController) {}
+  constructor(
+    public authService: AuthService,
+    public carService: CarService,
+    public nav: NavController
+  ) {}
 
-  animation(){
-    const svg=document.getElementById('fav');
-    dynamics.animate(svg,{
-      scaleY:0.8
-    },
-    {
-      type:dynamics.bounce,
-      duration:800,
-      bounciness:0,
-      complete:()=>{ this.nav.navigateForward('/fav');}
-    })
-   
+  animation() {
+    const svg = document.getElementById('fav');
+    dynamics.animate(
+      svg,
+      {
+        scaleY: 0.8,
+      },
+      {
+        type: dynamics.bounce,
+        duration: 800,
+        bounciness: 0,
+        complete: () => {
+          this.nav.navigateForward('/fav');
+        },
+      }
+    );
   }
-
 }

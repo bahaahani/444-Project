@@ -6,8 +6,8 @@ import { ViewcarPage } from './viewcar.page';
 const routes: Routes = [
   {
     path: '',
-    component: ViewcarPage
-  }
+    component: ViewcarPage,
+  },
 ];
 
 @NgModule({

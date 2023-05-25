@@ -1,28 +1,22 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title
       >Favourites
       <ion-icon name="heart" color="danger"></ion-icon>
     </ion-title>
-    <ion-button
-      fill="clear"
-      (click)="navCtrl.back()"
-      routerDirection="back"
-      slot="start"
-      color="light"
+    <ion-button fill="clear" (click)="navCtrl.back()" routerDirection="back"
       ><ion-icon name="arrow-back"></ion-icon
     ></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card
-    style="background-color: azure; border: 2px solid blue"
-    *ngFor="let f of favorites | async"
-  >
-    <img           (click)="dataSrv.selectedCarId = f.carid"
-          [routerLink]="['/viewcar']"
- src="{{ f.image }}" />
+  <ion-card *ngFor="let f of favorites | async">
+    <img
+      (click)="dataSrv.selectedCarId = f.carid"
+      [routerLink]="['/viewcar']"
+      src="{{ f.image }}"
+    />
     <ion-card-header>
       <ion-item>
         <ion-card-title

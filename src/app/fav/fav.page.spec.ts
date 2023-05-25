@@ -9,8 +9,8 @@ describe('FavPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FavPage ],
-      imports: [IonicModule.forRoot()]
+      declarations: [FavPage],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FavPage);

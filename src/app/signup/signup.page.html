@@ -8,7 +8,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <form (ngSubmit)="signup()" [formGroup]="LoginForm" class="signup-overlay ion-padding">
+  <form
+    (ngSubmit)="signup()"
+    [formGroup]="LoginForm"
+    class="signup-overlay ion-padding"
+  >
     <ion-grid>
       <ion-row>
         <ion-col size="12">
@@ -18,16 +22,27 @@
             <ion-input type="text" formControlName="userUserName"></ion-input>
           </ion-item>
           <!-- Error messages -->
-          <ion-item *ngIf="LoginForm.controls['userUserName'].hasError('required') && LoginForm.controls['userUserName'].touched" style="color: red">
+          <ion-item
+            *ngIf="LoginForm.controls['userUserName'].hasError('required') && LoginForm.controls['userUserName'].touched"
+            style="color: red"
+          >
             <p>Sorry, field username is required!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['userUserName'].hasError('pattern') && LoginForm.controls['userUserName'].touched" style="color: red">
+          <ion-item
+            *ngIf="LoginForm.controls['userUserName'].hasError('pattern') && LoginForm.controls['userUserName'].touched"
+            style="color: red"
+          >
             <p>Sorry, only small, capital letters and numbers are allowed!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['userUserName'].hasError('minlength') && LoginForm.controls['userUserName'].touched" style="color: red">
+          <ion-item
+            *ngIf="LoginForm.controls['userUserName'].hasError('minlength') && LoginForm.controls['userUserName'].touched"
+            style="color: red"
+          >
             <p>Minimum username length is 8!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['userUserName'].hasError('maxlength') && LoginForm.controls['userUserName'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['userUserName'].hasError('maxlength') && LoginForm.controls['userUserName'].touched"
+          >
             <p style="color: red">Sorry, maximum username length is 30!</p>
           </ion-item>
         </ion-col>
@@ -40,11 +55,17 @@
             <ion-input type="email" formControlName="Email"></ion-input>
           </ion-item>
           <!-- Error messages -->
-          <ion-item *ngIf="LoginForm.controls['Email'].hasError('required') && LoginForm.controls['Email'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['Email'].hasError('required') && LoginForm.controls['Email'].touched"
+          >
             <p style="color: red">Sorry, field Email is required!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['Email'].hasError('pattern') && LoginForm.controls['Email'].touched">
-            <p style="color: red">Sorry, only small and capital letters are allowed!</p>
+          <ion-item
+            *ngIf="LoginForm.controls['Email'].hasError('pattern') && LoginForm.controls['Email'].touched"
+          >
+            <p style="color: red">
+              Sorry, only small and capital letters are allowed!
+            </p>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -57,16 +78,24 @@
             <ion-input type="Phone" formControlName="Phone"></ion-input>
           </ion-item>
           <!-- Error messages -->
-          <ion-item *ngIf="LoginForm.controls['Phone'].hasError('required') && LoginForm.controls['Phone'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['Phone'].hasError('required') && LoginForm.controls['Phone'].touched"
+          >
             <p style="color: red">Sorry, field phone number is required!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['Phone'].hasError('pattern') && LoginForm.controls['Phone'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['Phone'].hasError('pattern') && LoginForm.controls['Phone'].touched"
+          >
             <p style="color: red">Sorry, only numbers are allowed!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['Phone'].hasError('minlength') && LoginForm.controls['Phone'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['Phone'].hasError('minlength') && LoginForm.controls['Phone'].touched"
+          >
             <p style="color: red">Sorry, minimum phone number length is 8!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['Phone'].hasError('maxlength') && LoginForm.controls['Phone'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['Phone'].hasError('maxlength') && LoginForm.controls['Phone'].touched"
+          >
             <p style="color: red">Sorry, maximum phone number length is 30!</p>
           </ion-item>
         </ion-col>
@@ -80,16 +109,26 @@
             <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
           <!-- Error messages -->
-          <ion-item *ngIf="LoginForm.controls['password'].hasError('required') && LoginForm.controls['password'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['password'].hasError('required') && LoginForm.controls['password'].touched"
+          >
             <p style="color: red">Sorry, field Password is required!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['password'].hasError('pattern') && LoginForm.controls['password'].touched">
-            <p style="color: red">Sorry, only small, capital letters and numbers are allowed!</p>
+          <ion-item
+            *ngIf="LoginForm.controls['password'].hasError('pattern') && LoginForm.controls['password'].touched"
+          >
+            <p style="color: red">
+              Sorry, only small, capital letters and numbers are allowed!
+            </p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['password'].hasError('minlength') && LoginForm.controls['password'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['password'].hasError('minlength') && LoginForm.controls['password'].touched"
+          >
             <p style="color: red">Sorry, minimum password length is 8!</p>
           </ion-item>
-          <ion-item *ngIf="LoginForm.controls['password'].hasError('maxlength') && LoginForm.controls['password'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['password'].hasError('maxlength') && LoginForm.controls['password'].touched"
+          >
             <p style="color: red">Sorry, maximum password length is 30!</p>
           </ion-item>
         </ion-col>
@@ -98,22 +137,36 @@
         <ion-col size="12">
           <ion-item>
             <ion-icon slot="start" name="lock-closed"></ion-icon>
-            <ion-label position="floating" color="medium">Confirm Password</ion-label>
+            <ion-label position="floating" color="medium"
+              >Confirm Password</ion-label
+            >
             <ion-input type="password" formControlName="cpass"></ion-input>
           </ion-item>
           <!-- Error messages -->
-          <ion-item *ngIf="LoginForm.controls['cpass'].hasError('required') && LoginForm.controls['cpass'].touched">
+          <ion-item
+            *ngIf="LoginForm.controls['cpass'].hasError('required') && LoginForm.controls['cpass'].touched"
+          >
             <p style="color: red">Confirm Password is required</p>
           </ion-item>
           <ion-item *ngIf="flag==false">
-            <p style="color: red">Confirm Password does not match the password</p>
+            <p style="color: red">
+              Confirm Password does not match the password
+            </p>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12" class="ion-text-center">
-          <ion-button expand="block" color="primary" type="submit" shape="round" [disabled]="!LoginForm.valid">Sign Up</ion-button>
-          <p style="color: black">Already have an account? <a routerLink="/login">Sign in here</a></p>
+          <ion-button
+            expand="block"
+            type="submit"
+            shape="round"
+            [disabled]="!LoginForm.valid"
+            >Sign Up</ion-button
+          >
+          <p style="color: black">
+            Already have an account? <a routerLink="/login">Sign in here</a>
+          </p>
         </ion-col>
       </ion-row>
     </ion-grid>

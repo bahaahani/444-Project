@@ -1,14 +1,16 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-button slot="start"
-    [routerLink]="['/tabs/tab1']"
-    routerDirection="back"
-    ><ion-icon name="arrow-back"></ion-icon
-      ></ion-button>
-      <ion-title class="ion-text-center">Cars</ion-title>
-      <ion-button color="danger" slot="end" routerLink="/fav">
-        <ion-icon name="heart"></ion-icon>
-      </ion-button>
+  <ion-toolbar>
+    <ion-button
+      slot="start"
+      [routerLink]="['/tabs/tab1']"
+      routerDirection="back"
+      fill="clear"
+      ><ion-icon name="arrow-back"></ion-icon
+    ></ion-button>
+    <ion-title class="ion-text-center">Cars</ion-title>
+    <ion-button color="danger" slot="end" routerLink="/fav">
+      <ion-icon name="heart"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +20,6 @@
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 
   <ion-list>
     <ion-item>
@@ -71,19 +72,29 @@
   <ion-button expand="block" (click)="filterParam = {}">Reset</ion-button>
 
   <ion-list *ngIf="filterParam != null && filterParam == filterParam">
-    <ion-card *ngFor="let car of cars | async | filterCar : filterParam;let i=index">
+    <ion-card
+      *ngFor="let car of cars | async | filterCar : filterParam;let i=index"
+    >
       <ion-card-header class="ion-padding">
-        <img  style="width: 100%;" src="{{car.image}}" alt="" />
+        <img style="width: 100%" src="{{car.image}}" alt="" />
         <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
-        <ion-card-subtitle class="ion-no-padding">{{car.type}}</ion-card-subtitle>
+        <ion-card-subtitle class="ion-no-padding"
+          >{{car.type}}</ion-card-subtitle
+        >
       </ion-card-header>
       <ion-card-content>
-        <ion-card-subtitle class="animatebutton" style="font-weight: bold;">Color: {{car.color}}</ion-card-subtitle>
-        <ion-card-subtitle class="animatebutton" style="font-weight: bold;">Mileage: {{car.mileage}}</ion-card-subtitle>
-        <ion-card-subtitle class="animatebutton" style="font-weight: bold;" >Price: {{car.price}}</ion-card-subtitle>
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold"
+          >Color: {{car.color}}</ion-card-subtitle
+        >
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold"
+          >Mileage: {{car.mileage}}</ion-card-subtitle
+        >
+        <ion-card-subtitle class="animatebutton" style="font-weight: bold"
+          >Price: {{car.price}}</ion-card-subtitle
+        >
       </ion-card-content>
       <ion-buttons *ngIf="admin">
-        <ion-button color="danger"  (click)="deleteCar(car)">
+        <ion-button color="danger" (click)="deleteCar(car)">
           <ion-icon name="close-circle"></ion-icon>Delete
         </ion-button>
         <ion-button color="success" (click)="openEdit(car)">
@@ -91,16 +102,20 @@
         </ion-button>
       </ion-buttons>
       <!--style="display:flex;justify-content:center"-->
-      <ion-buttons >
+      <ion-buttons>
         <ion-button
           fill="clear"
-          color="primary"
           (click)="dataSrv.selectedCarId = car.id!"
           [routerLink]="['/viewcar']"
         >
           <ion-icon name="arrow-forward"></ion-icon>
         </ion-button>
-        <ion-button class="animatebutton" (click)="animatebutton(ref)" (click)="dataSrv.addToFavorite(car)" #ref>
+        <ion-button
+          class="animatebutton"
+          (click)="animatebutton(ref)"
+          (click)="dataSrv.addToFavorite(car)"
+          #ref
+        >
           <ion-icon name="heart"></ion-icon>Favorite
         </ion-button>
         <ion-button (click)="selected_car = car; selectDate()">
@@ -109,7 +124,6 @@
       </ion-buttons>
     </ion-card>
   </ion-list>
-  
 
   <ion-modal [cssClass]="'bottom-end'">
     <ng-template>

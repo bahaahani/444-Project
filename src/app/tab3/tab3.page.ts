@@ -39,22 +39,10 @@ export class Tab3Page {
     );
   }
 
-  /*async removeFavorite(fid: string) {
-    const toast = await this.toastCtrl.create({
-      message: 'Car removed from favorite',
-      duration: 1500,
-      position: 'bottom',
-    });
-    deleteDoc(doc(this.dataSrv.favoriteCollection, fid)).then(() => {
-      toast.present();
-    });
-  }*/
-
   LogOut() {
     this.authSrv.logOut();
   }
- 
-  
+
   async Edit() {
     const toat = await this.toastCtrl.create({
       message: 'Infomration has been updated successfully',

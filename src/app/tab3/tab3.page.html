@@ -1,34 +1,61 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>User Profile</ion-title>
-    <ion-button slot="end" fill="clear" color="dark" (click)="LogOut()" color="light">
+    <ion-button
+      slot="end"
+      fill="clear"
+      color="dark"
+      (click)="LogOut()"
+      color="light"
+    >
       <ion-icon name="log-in-outline"></ion-icon>
-      Log out</ion-button>
+      Log out</ion-button
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div style="width: 100%" align="center">
     <div width="50%" style="border-radius: 50%" style="padding-top: 50px">
-      <ion-img src="assets/userprofile2.png"  style="border-radius: 50%; width: 50%; height: 100px"></ion-img>
+      <ion-img
+        src="assets/userprofile2.png"
+        style="border-radius: 50%; width: 50%; height: 100px"
+      ></ion-img>
     </div>
     <ion-list class="ion-text-center">
       <ion-item color="light">
         <ion-label>User Name</ion-label>
-        <ion-input type="text" [(ngModel)]="user.UserName" color="medium"></ion-input>
-        <ion-button fill="clear" (click)="Edit()"><ion-icon name="pencil"></ion-icon></ion-button>
+        <ion-input
+          type="text"
+          [(ngModel)]="user.UserName"
+          color="medium"
+        ></ion-input>
+        <ion-button fill="clear" (click)="Edit()"
+          ><ion-icon name="pencil"></ion-icon
+        ></ion-button>
       </ion-item>
 
       <ion-item color="light">
         <ion-label>Phone Number</ion-label>
-        <ion-input type="text" [(ngModel)]="user.phone" color="medium"></ion-input>
-        <ion-button fill="clear" (click)="Edit()"><ion-icon name="pencil"></ion-icon></ion-button>
+        <ion-input
+          type="text"
+          [(ngModel)]="user.phone"
+          color="medium"
+        ></ion-input>
+        <ion-button fill="clear" (click)="Edit()"
+          ><ion-icon name="pencil"></ion-icon
+        ></ion-button>
       </ion-item>
 
       <ion-item color="light">
         <ion-label>Email </ion-label>
 
-        <ion-input type="text" color="medium" [(ngModel)]="user.Email" readonly="true"></ion-input>
+        <ion-input
+          type="text"
+          color="medium"
+          [(ngModel)]="user.Email"
+          readonly="true"
+        ></ion-input>
       </ion-item>
     </ion-list>
   </div>

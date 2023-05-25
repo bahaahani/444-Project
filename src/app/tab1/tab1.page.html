@@ -1,7 +1,13 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title class="ion-text-center"> View Showroom </ion-title>
-    <ion-button color="danger" slot="end"  shape="round" (click)="animation()" id="fav">
+    <ion-button
+      color="danger"
+      slot="end"
+      shape="round"
+      (click)="animation()"
+      id="fav"
+    >
       <ion-icon name="heart"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -11,8 +17,12 @@
   <!-- HTML code for the button -->
 
   <ion-item>
-    <ion-searchbar debounce="800" animated="true" [(ngModel)]="searchTerm"
-      (ionInput)="onSearchInput($event)"></ion-searchbar>
+    <ion-searchbar
+      debounce="800"
+      animated="true"
+      [(ngModel)]="searchTerm"
+      (ionInput)="onSearchInput($event)"
+    ></ion-searchbar>
   </ion-item>
 
   <div *ngIf="filteredShowrooms.length >0" class="ion-text-center">
@@ -30,30 +40,40 @@
     </ion-item>
   </div>
 
-  <ion-slides pager="true" autoplay="true" keyboard="true" class="slide-container">
+  <ion-slides
+    pager="true"
+    autoplay="true"
+    keyboard="true"
+    class="slide-container"
+  >
     <ion-slide *ngFor="let image of this.carService.showroom | async">
       <img src="{{image.image}}" class="slide-image" />
     </ion-slide>
   </ion-slides>
 
-
-  <ion-item >
+  <ion-item>
     <h1 class="bold-text ion-text-center">Showrooms Nearby You</h1>
   </ion-item>
 
-  <ion-card *ngFor="let showroom of carService.showroom|async" >
+  <ion-card *ngFor="let showroom of carService.showroom|async">
     <img src="{{showroom.image}}" width="100%" />
-    <ion-card-header >
-      <ion-card-title style="font-weight: bold;">{{showroom.name}}</ion-card-title>
+    <ion-card-header>
+      <ion-card-title style="font-weight: bold"
+        >{{showroom.name}}</ion-card-title
+      >
     </ion-card-header>
-<!--style="background-color:rgba(37, 89, 243, 0.15);"-->
-    <ion-card-content  >
+    <!--style="background-color:rgba(37, 89, 243, 0.15);"-->
+    <ion-card-content>
       <ion-card-title>{{showroom.address}}</ion-card-title>
       <p>Phone Number: {{showroom.phone}}</p>
       <ion-grid>
         <ion-row>
           <ion-col *ngFor="let star of [1, 2, 3, 4, 5]">
-            <ion-icon name="star" color="warning" [style.opacity]="star <= showroom.rating ? '1' : '0.3'"></ion-icon>
+            <ion-icon
+              name="star"
+              color="warning"
+              [style.opacity]="star <= showroom.rating ? '1' : '0.3'"
+            ></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -62,7 +82,9 @@
 
     <ion-row>
       <ion-col>
-        <ion-button routerLink="showroom/{{ showroom.id }}" expand="block">View Details</ion-button>
+        <ion-button routerLink="showroom/{{ showroom.id }}" expand="block"
+          >View Details</ion-button
+        >
         <!-- {{ showroom.id }} -->
       </ion-col>
     </ion-row>
@@ -88,13 +110,19 @@
         <ion-grid>
           <ion-row>
             <ion-col *ngFor="let star of [1, 2, 3, 4, 5]">
-              <ion-icon name="star" color="warning" [style.opacity]="star <= showroom.rating ? '1' : '0.3'" ></ion-icon>
+              <ion-icon
+                name="star"
+                color="warning"
+                [style.opacity]="star <= showroom.rating ? '1' : '0.3'"
+              ></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
         <p>Distance: {{showroom.distance}}</p>
       </ion-label>
-      <ion-button routerLink="showroom/{{ showroom.id }}">View details</ion-button>
+      <ion-button routerLink="showroom/{{ showroom.id }}"
+        >View details</ion-button
+      >
       <!-- Currently doesnt work!!! -->
     </ion-item>
   </ion-list>

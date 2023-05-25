@@ -17,7 +17,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./fav.page.scss'],
 })
 export class FavPage implements OnInit {
-
   favorites = collectionData(
     query(
       this.dataSrv.favoriteCollection,
@@ -40,8 +39,7 @@ export class FavPage implements OnInit {
     );
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async removeFavorite(fid: string) {
     const toast = await this.toastCtrl.create({
@@ -53,5 +51,4 @@ export class FavPage implements OnInit {
       toast.present();
     });
   }
-
 }

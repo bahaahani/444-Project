@@ -31,27 +31,29 @@ export class ShowroomPage {
   shoowid: any;
   testDriveDate = new Date();
   filterParam: any = {};
- 
-  
-  animatebutton(ref:any){
+
+  animatebutton(ref: any) {
     //animatebutton
     //const b=i.toString();
     //var elem = document.getElementById(b);
-    dynamics.animate(ref.el, {
-     // translateX: 350,
-     scaleX:0.9
-    }, {
-      type: dynamics.bounce,
-      duration: 1000,
-      bounciness:0,
+    dynamics.animate(
+      ref.el,
+      {
+        // translateX: 350,
+        scaleX: 0.9,
+      },
+      {
+        type: dynamics.bounce,
+        duration: 1000,
+        bounciness: 0,
 
-      //friction: 200,
-      complete:()=>{
-      if(ref.el!=null)
-      ref.el.style.color='red';
-    }
-    });
-  /*  const element = document.getElementById(b);
+        //friction: 200,
+        complete: () => {
+          if (ref.el != null) ref.el.style.color = 'red';
+        },
+      }
+    );
+    /*  const element = document.getElementById(b);
 
     dynamics.animate(
       element,
@@ -68,7 +70,7 @@ export class ShowroomPage {
     );*/
   }
 
- /* shakeImage() {
+  /* shakeImage() {
     const b=i.toString();
     const element = document.getElementById(b);
     dynamics.animate(

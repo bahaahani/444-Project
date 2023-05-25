@@ -39,12 +39,13 @@ const routes: Routes = [
   },
   {
     path: 'viewcar',
-    loadChildren: () => import('./viewcar/viewcar.module').then( m => m.ViewcarPageModule)
-  },  {
-    path: 'fav',
-    loadChildren: () => import('./fav/fav.module').then( m => m.FavPageModule)
+    loadChildren: () =>
+      import('./viewcar/viewcar.module').then((m) => m.ViewcarPageModule),
   },
-
+  {
+    path: 'fav',
+    loadChildren: () => import('./fav/fav.module').then((m) => m.FavPageModule),
+  },
 ];
 @NgModule({
   imports: [

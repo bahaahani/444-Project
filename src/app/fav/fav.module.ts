@@ -9,12 +9,7 @@ import { FavPageRoutingModule } from './fav-routing.module';
 import { FavPage } from './fav.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    FavPageRoutingModule
-  ],
-  declarations: [FavPage]
+  imports: [CommonModule, FormsModule, IonicModule, FavPageRoutingModule],
+  declarations: [FavPage],
 })
 export class FavPageModule {}

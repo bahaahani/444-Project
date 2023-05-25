@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar  color="primary">
-    <ion-button fill="clear" (click)="navCtrl.back()" routerDirection="back" color="light"
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="navCtrl.back()" routerDirection="back"
       ><ion-icon name="arrow-back"></ion-icon
     ></ion-button>
     <ion-title>View Car</ion-title>
@@ -9,40 +9,66 @@
 
 <ion-content>
   <ion-card>
-    <img class="myImage" style="width:100%" src="{{ car.image }}" />
+    <img class="myImage" style="width: 100%" src="{{ car.image }}" />
     <ion-card-header>
       <ion-card-title>{{ car.model }}</ion-card-title>
       <ion-card-subtitle>{{ car.manufacturer }}</ion-card-subtitle>
-      <ion-button (click)="shake()" >
-        <ion-icon name="heart"></ion-icon>
-        Shake to like
-      </ion-button>
     </ion-card-header>
-    <ion-item><p style="font-weight: bold;">Type:</p>  <p style="color:black">{{ car.type }}</p></ion-item>
-    <ion-item><p style="font-weight: bold;">Color:</p><p style="color:black">{{ car.color }}</p> </ion-item>
-    <ion-item><p style="font-weight: bold;">Engine:</p> {{ car.engine }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Features:</p> {{ car.features }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Mileage: </p>{{ car.mileage }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Number of seats:</p> {{ car.numberOfSeats }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Mileage:</p> {{ car.mileage }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Price:</p> {{ car.price }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Specifications:</p> {{ car.specifications }}</ion-item>
-    <ion-item><p style="font-weight: bold;">Status:</p> {{ car.status }}</ion-item>
+    <ion-item
+      ><p style="font-weight: bold">Type:</p>
+      <p style="color: black">{{ car.type }}</p></ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Color:</p>
+      <p style="color: black">{{ car.color }}</p>
+    </ion-item>
+    <ion-item
+      ><p style="font-weight: bold">Engine:</p>
+      {{ car.engine }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Features:</p>
+      {{ car.features }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Mileage:</p>
+      {{ car.mileage }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Number of seats:</p>
+      {{ car.numberOfSeats }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Mileage:</p>
+      {{ car.mileage }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Price:</p>
+      {{ car.price }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Specifications:</p>
+      {{ car.specifications }}</ion-item
+    >
+    <ion-item
+      ><p style="font-weight: bold">Status:</p>
+      {{ car.status }}</ion-item
+    >
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      <ion-item color="dark">
-        <ion-card-title style="font-weight: bold;">Comments</ion-card-title>
+      <ion-item>
+        <ion-card-title style="font-weight: bold">Comments</ion-card-title>
         <ion-button slot="end" id="commentModal">Add</ion-button>
       </ion-item>
     </ion-card-header>
-    <ion-card *ngFor="let c of comments | async" style="background-color:rgb(242, 238, 238)">
+    <ion-card *ngFor="let c of comments | async">
       <ion-card-header>
-        <ion-card-title >{{ c.username }}</ion-card-title>
-        <ion-card-subtitle >{{ c.rating }} out of 5</ion-card-subtitle>
+        <ion-card-title>{{ c.username }}</ion-card-title>
+        <ion-card-subtitle>{{ c.rating }} out of 5</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content >{{ c.comment }}</ion-card-content>
+      <ion-card-content>{{ c.comment }}</ion-card-content>
       <ion-button
         *ngIf="admin"
         fill="clear"
