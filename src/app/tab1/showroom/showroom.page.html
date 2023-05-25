@@ -76,7 +76,12 @@
       *ngFor="let car of cars | async | filterCar : filterParam;let i=index"
     >
       <ion-card-header class="ion-padding">
-        <img style="width: 100%" src="{{car.image}}" alt="" />
+        <img
+          (click)="dataSrv.selectedCarId = car.id!"
+          [routerLink]="['/viewcar']"
+          style="width: 100%"
+          src="{{car.image}}"
+        />
         <ion-card-title class="ion-no-padding">{{car.model}}</ion-card-title>
         <ion-card-subtitle class="ion-no-padding"
           >{{car.type}}</ion-card-subtitle
